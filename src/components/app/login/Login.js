@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import '../auth/login.css';
 import GoogleAuth from '../auth/GoogleAuth';
-import { Signin } from '../auth/Login';
+import { Signin } from '../auth/LoginForm';
 
 export default class Login extends PureComponent {
 
@@ -10,16 +10,12 @@ export default class Login extends PureComponent {
 
     return (
       <div>
-        <h3>Please Sign In</h3>
         <div className="login-container">
+          <h3>Please Sign In</h3>
           <Signin/>
           <Link to="/auth/signup">Create New Account</Link>
+          <GoogleAuth/>
         </div>
-        {/* <p>
-          <Link to="/auth/signin">Sign In</Link> &nbsp;&nbsp;
-          <Link to="/auth/signup">Sign Up</Link>
-        </p> */}
-        <GoogleAuth/>
       </div>
     );
   }

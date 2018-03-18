@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { signup, signin } from './actions';
 import './login.css';
 
-class Login extends PureComponent {
+class LoginForm extends PureComponent {
 
   state = {
     error: null
@@ -37,21 +37,27 @@ class Login extends PureComponent {
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
-          <legend>{legendText}</legend>
-          <label htmlFor="email">
+          <fieldset>
+            
+            <legend>{legendText}</legend>
+
+            <label htmlFor="email">
             Email: <input name="email" required placeholder="name@gmail.com"/>
-          </label>
-          <br/>
-          <label htmlFor="password">
+            </label>
+          
+            <label htmlFor="password">
             Password: <input name="password" required placeholder="abc123"/>
-          </label>
-          <br/>
-          <div>
-            <button>{buttonText}</button>
-          </div>
-          <p style={{ color: 'red' }}>
-            {error && error.message}
-          </p>
+            </label>
+          
+            <div>
+              <button>{buttonText}</button>
+            </div>
+
+            <p style={{ color: 'red' }}>
+              {error && error.message}
+            </p>
+
+          </fieldset>
         </form>
       </div>
     );
@@ -64,7 +70,7 @@ export const Signup = connect(
     legendText: 'Sign Up' 
   }),
   { onSubmit: signup }
-)(Login);
+)(LoginForm);
 
 export const Signin = connect(
   () => ({ 
@@ -72,4 +78,4 @@ export const Signin = connect(
     legendText: 'Sign In'
   }),
   { onSubmit: signin }
-)(Login);
+)(LoginForm);

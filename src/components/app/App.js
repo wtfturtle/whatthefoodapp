@@ -5,6 +5,8 @@ import Loading from './errorloading/Loading';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Home from '../home/Home';
+import Login from './login/Login';
+import { Signin, Signup } from './auth/Login';
 
 
 export default class App extends Component {
@@ -21,7 +23,9 @@ export default class App extends Component {
               <Loading/>
               <Switch>
                 <Route exact path="/" component={Home}/>
-                {/* <Route path="/about" component={About}/> */}
+                <Route path="/login" component={Login}/>
+                <Route path="/auth/signin" component={Signin}/>
+                <Route path="/auth/signup" component={Signup}/>
                 {/* <Route path="/movies/:id" render={({ match }) => <MovieDetail imdbID={match.params.id}/>}/> */}
                 <Redirect to="/"/>
               </Switch>

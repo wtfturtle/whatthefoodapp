@@ -14,9 +14,9 @@ class Header extends Component {
         <section className="head-container maxwidth-wrap">
           <Link to="/" className="no-line"><h1 className="logo">What The Food</h1></Link>
           <nav>
-            <ul>
+            <ul className="nav-ul">
               <li><Link to="/">Home</Link></li>
-              {/* <li><Link to="/about">About</Link></li> */}
+              <li><Link to="/login">Log In</Link></li>
             </ul>
           </nav>
           {error && <Error error={error}/>}

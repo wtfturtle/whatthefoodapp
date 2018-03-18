@@ -1,0 +1,91 @@
+@import '../../../styles/variables.css';
+
+.login-container {
+  background-color: $lightgray;
+  padding: 2rem;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  text-align: left;
+}
+
+fieldset legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+  position:absolute;
+  left: -5000px;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin-left: 0px;
+}
+
+label {
+  display: block;
+  padding: 0 0 .5rem;
+}
+
+$input-height: 2.9rem;
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  border: 4px solid rgb(202, 202, 202);
+  padding: .6rem;
+  margin: 0 0 0.4rem;
+  font-size: 100%;
+  background: white;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0px 9999px white;
+}
+
+button {
+  background: #008834;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.7rem 0.9rem;
+  transition: 0.3s ease all;
+
+  &:disabled {
+    opacity: .5;
+    cursor: no-drop;
+  }
+}
+
+button:hover {
+  background: #3b5243;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: rgb(78, 78, 78);
+}
+
+input[type=password] {
+  box-sizing: border-box;
+  width: 100%;
+  border-top: 4px solid rgb(202, 202, 202);
+  border-left: 4px solid rgb(202, 202, 202);
+  border-bottom: 4px solid rgb(202, 202, 202);
+  border-right: 0px;
+  padding: .6rem;
+  margin: 0 0 0.4rem;
+  font-size: 100%;
+}

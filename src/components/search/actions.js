@@ -1,2 +1,2 @@
-import { search } from './reducers';
+import { search, QUERY } from './reducers';
 

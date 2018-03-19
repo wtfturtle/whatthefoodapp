@@ -1,46 +1,31 @@
 import React, { Component } from 'react';
 import { config } from './firebase';
 
-export const foursquare = require('react-foursquare')({
-  clientID: 'TBY4FBFNODABHX5VOK32VECUDGO5RMBOJ3GF113SFWLML0ZD',
-  clientSecret: '021EF3LQK0AAKW2QW42VFVF3Z4FMZNOAMCNTZBIVBZMF3H0M'  
-});
+const clientID = 'TBY4FBFNODABHX5VOK32VECUDGO5RMBOJ3GF113SFWLML0ZD';
+const clientSecret = '021EF3LQK0AAKW2QW42VFVF3Z4FMZNOAMCNTZBIVBZMF3H0M';
 
-export const params = {
-  'll': '37.7749,-122.4194',
-  'query': 'Blue Bottle'
+const BASE_URL = `https://api.foursquare.com/v2/venues/explore?client_id=${clientID}&client_secret=${clientSecret}&near=Portland,OR&`;
+// const BASE_URL = `https://api.foursquare.com/v2/venues/explore?client_id=${clientID}&client_secret=${clientSecret}&near=Portland,OR&query=${query}&v=20180312`;
+// add lat and long before query... '&ll=...'
+
+const get = url => fetch(url) {
+  .then(response => response.json())
+  .then(checkResponseData);
 };
 
-// export default class FoursquareDemo extends Component {
+export const checkResponseData = data => {
+  if(data.Response === 'True') return data;
+  throw data.Error;
+};
 
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       items: []
-//     };
-//   }
+export function search(query) {
+  const url = `${BASE_URL}query=${query}&v=20180312`;
 
-//   componentDidMount() {    
-//     foursquare.venues.getVenues(params)
-//       .then(res=> {
-//         this.setState({ items: res.response.venues });
-//       });
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <div>Items:</div>
-//         { this.state.items.map(item=> { return <div key={item.id}>{item.name}</div>}) }
-//       </div>
-//     );
-//   }
-// }
-
-
-
-
-
+  return fetch(url).then(result => {
+    if(result.ok) return result.json();
+    return result.json().then(json => { throw json; });
+  });
+}
 // const URL2 = 'https://wtfoodtracker.firebaseio.com';
 // const USER_URL = `${URL2}/`; //find user-specific url to query, to get a user's list of saved restaurants
 

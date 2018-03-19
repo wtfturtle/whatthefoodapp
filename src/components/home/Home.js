@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../app/app.css';
+import '../app/App.css';
 
 class Home extends Component {
 
@@ -8,9 +8,7 @@ class Home extends Component {
 
     return (
       <section className="main-container maxwidth-wrap">
-
         Home
-
       </section>
     );
   }

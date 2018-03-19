@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { foursquare } from '../../services/foursquareApi';
 
 export default class SearchForm extends Component {
 

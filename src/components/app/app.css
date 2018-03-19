@@ -62,6 +62,10 @@
   }
 }
 
+.flex-li {
+  display: flex;
+}
+
 .main-container {
   text-align: left;
   padding: 2rem 0;

@@ -3,13 +3,15 @@ import thunk from 'redux-thunk';
 import promiseMiddleware from './promiseMiddleware';
 import { loading, error } from '../components/app/errorloading/reducers';
 import { user } from '../components/app/auth/reducers';
+import { search } from '../components/search/reducers';
 
 // combine reducer
 const reducer = combineReducers({
   //somthing
   loading,
   error,
-  user
+  user,
+  search
 });
 
 // extension

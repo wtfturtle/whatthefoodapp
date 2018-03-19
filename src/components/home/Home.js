@@ -4,11 +4,11 @@ import '../app/App.css';
 
 class Home extends Component {
 
-  render() { 
+  render() {
+
     return (
       <section className="main-container maxwidth-wrap">
         Home
-
       </section>
     );
   }

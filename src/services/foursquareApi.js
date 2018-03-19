@@ -8,17 +8,16 @@ const BASE_URL = `https://api.foursquare.com/v2/venues/explore?client_id=${clien
 // const BASE_URL = `https://api.foursquare.com/v2/venues/explore?client_id=${clientID}&client_secret=${clientSecret}&near=Portland,OR&query=${query}&v=20180312`;
 // add lat and long before query... '&ll=...'
 
-const get = url => fetch(url) {
-  .then(response => response.json())
-  .then(checkResponseData);
-};
+// const get = url => fetch(url) 
+//   .then(response => response.json())
+//   .then(checkResponseData);
 
 export const checkResponseData = data => {
   if(data.Response === 'True') return data;
   throw data.Error;
 };
 
-export function search(query) {
+export function search({ query }) {
   const url = `${BASE_URL}query=${query}&v=20180312`;
 
   return fetch(url).then(result => {

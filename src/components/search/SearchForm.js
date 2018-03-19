@@ -14,12 +14,12 @@ export default class SearchForm extends Component {
     event.preventDefault();
     this.props.onComplete({
       ...this.state
-    })
-      .then(() => {
-        this.setState({
-          query: '',
-        });
-      });
+    });
+      
+    this.setState({
+      query: '',
+    });
+
   };
 
   handleChange = ({ target }) => {
@@ -33,7 +33,7 @@ export default class SearchForm extends Component {
       <form className="search-form" onSubmit={this.handleSubmit}>
         <fieldset>
           
-          <legend className="inputs">Find Food</legend>
+          <legend className="inputs"></legend>
 
           <label htmlFor="query">
             <input name="query" value={query} onChange={this.handleChange} placeholder="Search restaurants"/>

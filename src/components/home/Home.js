@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../app/App.css';
+import '../app/app.css';
+import Search from '../search/Search';
 
 class Home extends Component {
 
@@ -9,6 +10,7 @@ class Home extends Component {
     return (
       <section className="main-container maxwidth-wrap">
         Home
+        <Search/>
       </section>
     );
   }

@@ -25,6 +25,6 @@ export function search({ query }) {
     return result.json().then(json => { throw json; });
   });
 }
-// const URL2 = 'https://wtfoodtracker.firebaseio.com';
-// const USER_URL = `${URL2}/`; //find user-specific url to query, to get a user's list of saved restaurants
+// const URL = 'https://wtfoodtracker.firebaseio.com';
+// const USER_URL = `${URL}/`; //find user-specific url to query, to get a user's list of saved restaurants
 

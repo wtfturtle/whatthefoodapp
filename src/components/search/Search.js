@@ -5,20 +5,23 @@ import { search } from '../../services/foursquareApi';
 
 export default class Search extends Component {
 
-  handleSearch(query){
-    search(query).then(
-      response => {
-        console.log(response);
+  handleSearch = (query) => {
+    search(query)
+      .then(res => {
+        this.setState({ results: res.response.groups[0].items });
       }
-    );
-  }
+      );
+  };
 
   render() {
+
+    const { results } = this.props;
+
     return (
       <div>
         <SearchForm onComplete={this.handleSearch}/>
-        {/* <Results/> */}
+        <Results results={results}/>
       </div>
-    )
+    );
   }
 }

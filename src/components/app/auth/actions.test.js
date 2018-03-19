@@ -1,5 +1,5 @@
 jest.mock('../../../services/authApi', () => ({
-  onUserStateChange: jest.fn(handler => {
+  onUserStateChanged: jest.fn(handler => {
     handler({});
   }),
   onSignUp: jest.fn((email, password) => {

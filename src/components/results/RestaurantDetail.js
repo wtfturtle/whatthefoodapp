@@ -7,12 +7,12 @@ class ResultDetail extends Component {
   render() {
 
     return(
-
+      
     );
   }
- }
+}
 
- export default connect(
+export default connect(
   null,
   null
 )(ResultDetail);

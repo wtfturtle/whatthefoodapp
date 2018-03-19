@@ -10,9 +10,9 @@ class Filter extends Component {
 
     );
   }
- }
+}
 
- export default connect(
+export default connect(
   null,
   null
 )(Filter);

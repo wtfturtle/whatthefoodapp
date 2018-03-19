@@ -11,7 +11,7 @@ class Result extends Component {
 
     return (
       <li className="result-li">
-        {/* <Link to={`/results/${id}`}>{name}</Link> */}
+        {/* <Link to={`/restaurant/${id}`}>{name}</Link> */}
       </li>
     );
   }

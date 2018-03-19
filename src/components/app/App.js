@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Loading from './errorloading/Loading';
@@ -18,7 +18,7 @@ export default class App extends Component {
       <div className="app">
         
         <Router>
-          <div>
+          <Fragment>
             <Header/>
             <main role="main" id="main">
               <Loading/>
@@ -32,7 +32,7 @@ export default class App extends Component {
                 <Redirect to="/"/>
               </Switch>
             </main>
-          </div>
+          </Fragment>
         </Router>
 
         <Footer/>

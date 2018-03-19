@@ -10,6 +10,7 @@ export const onUserStateChanged = handler => {
 export const onSignUp = (email, password) => {
   return auth.createUserWithEmailAndPassword(email, password);
 };
+
 export const onSignIn = (email, password) => {
   return auth.signInWithEmailAndPassword(email, password);
 };

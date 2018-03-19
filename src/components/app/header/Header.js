@@ -29,7 +29,7 @@ class Header extends Component {
                 <li><Link to="/">Home</Link></li>
                 {user 
                   ? <div className="flex-li">
-                    <li>{user && <span>Hello, {user.name}</span>}</li>
+                    <li><Link to="/user">{user && <span>Hello, {user.name}</span>}</Link></li>
                     <li><Link to="/" onClick={logout}>Log Out</Link></li>
                   </div>
                   : <div className="flex-li">

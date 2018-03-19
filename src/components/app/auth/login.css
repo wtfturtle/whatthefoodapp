@@ -1,10 +1,24 @@
 @import '../../../styles/variables.css';
 
+
+.login-background {
+  background-image: url('http://res.cloudinary.com/dph3nw8ym/image/upload/c_scale,q_auto:eco,w_2200/v1521431490/nafinia-putra-59655-unsplash_uwk3oq.jpg');
+  background-size: cover;
+  z-index: 0;
+  position: relative;
+}
+
+.login-pad {
+  padding: 5rem 0;
+}
+
 .login-container {
-  background-color: $white;
+  background-color: rgba(255,255,255,0.9);
   padding: 2rem;
   max-width: 320px;
   margin: 0 auto;
+  z-index: 100;
+  justify-content: center;
 }
 
 .login {

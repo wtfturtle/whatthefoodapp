@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import '../auth/login.css';
-import GoogleAuth from '../auth/GoogleAuth';
-import { Signin } from '../auth/LoginForm';
+import { Signup } from '../auth/LoginForm';
 
-export default class Login extends PureComponent {
+export default class CreateLogin extends PureComponent {
 
   render() {
 
@@ -12,10 +11,9 @@ export default class Login extends PureComponent {
       <div className="login-background">
         <section className="login-pad maxwidth-wrap">
           <div className="login-container">
-            <h4>Please Sign In</h4>
-            <Signin/>
-            <Link to="/signup">Create New Account</Link>
-            <GoogleAuth/>
+            <Link to="/login">⬅ Back</Link>
+            <h4>Create New Account</h4>
+            <Signup/>
           </div>
         </section>
       </div>

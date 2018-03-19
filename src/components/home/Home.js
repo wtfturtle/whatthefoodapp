@@ -7,7 +7,7 @@ class Home extends Component {
   render() { 
     return (
       <section className="main-container maxwidth-wrap">
-    
+        Home
 
       </section>
     );

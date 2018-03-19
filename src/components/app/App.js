@@ -6,6 +6,7 @@ import Header from './header/Header';
 import Footer from './footer/Footer';
 import Home from '../home/Home';
 import Login from './login/Login';
+import CreateLogin from './login/CreateLogin';
 import { Signin, Signup } from './auth/LoginForm';
 
 
@@ -24,6 +25,7 @@ export default class App extends Component {
               <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/login" component={Login}/>
+                <Route path="/signup" component={CreateLogin}/>
                 <Route path="/auth/signin" component={Signin}/>
                 <Route path="/auth/signup" component={Signup}/>
                 {/* <Route path="/movies/:id" render={({ match }) => <MovieDetail imdbID={match.params.id}/>}/> */}

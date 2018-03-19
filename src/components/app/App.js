@@ -8,7 +8,7 @@ import Home from '../home/Home';
 import Login from './login/Login';
 import CreateLogin from './login/CreateLogin';
 import { Signin, Signup } from './auth/LoginForm';
-
+import Results from '../results/Results';
 
 export default class App extends Component {
 
@@ -28,6 +28,7 @@ export default class App extends Component {
                 <Route path="/signup" component={CreateLogin}/> */}
                 <Route path="/auth/signin" component={Signin}/>
                 <Route path="/auth/signup" component={Signup}/>
+                <Route path="/resulttest" component={Results}/>
                 {/* <Route path="/movies/:id" render={({ match }) => <MovieDetail imdbID={match.params.id}/>}/> */}
                 <Redirect to="/"/>
               </Switch>

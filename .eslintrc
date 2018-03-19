@@ -52,6 +52,13 @@
       "babel/object-curly-spacing": ["error", "always"],
       "babel/no-invalid-this": 1,
       "babel/semi": 1,
-      "react/prop-types": "off"
+      "react/prop-types": "off",
+      "jsx-a11y/label-has-for": [ 2, {
+        "components": [ "Label" ],
+        "required": {
+            "some": [ "nesting", "id" ]
+        },
+        "allowChildren": false
+    }]
   }
 }

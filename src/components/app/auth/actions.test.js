@@ -1,4 +1,4 @@
-jest.mock('../../services/userFirebaseApi', () => ({
+jest.mock('../../../services/authApi', () => ({
   onUserStateChange: jest.fn(handler => {
     handler({});
   }),
@@ -9,6 +9,7 @@ jest.mock('../../services/userFirebaseApi', () => ({
     return { email, password };
   }),
   onSignOut: jest.fn(() => {})
+
 }));
 
 import { listenForUser, signup, signin, logout } from './actions';

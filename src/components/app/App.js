@@ -24,8 +24,8 @@ export default class App extends Component {
               <Loading/>
               <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/signup" component={CreateLogin}/>
+                {/* <Route path="/login" component={Login}/>
+                <Route path="/signup" component={CreateLogin}/> */}
                 <Route path="/auth/signin" component={Signin}/>
                 <Route path="/auth/signup" component={Signup}/>
                 {/* <Route path="/movies/:id" render={({ match }) => <MovieDetail imdbID={match.params.id}/>}/> */}

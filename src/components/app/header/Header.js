@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../app.css';
 import Error from '../errorloading/Error';
+import { listenForUser, logout } from '../auth/actions';
 
 class Header extends Component {
 
+  componentDidMount() {
+    this.props.listenForUser();
+  }
+
   render() { 
-    const { error } = this.props;
+    const { error, logout, user } = this.props;
 
     return (
       <header role="banner" id="header">
@@ -22,7 +27,13 @@ class Header extends Component {
             <nav id="main-menu">
               <ul className="nav-ul">
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/login">Log In</Link></li>
+                {user 
+                  ? <li><Link to="/" onClick={logout}/>Log Out</li>
+                  : <div>
+                    <li><Link to="/auth/signin">Log In</Link></li>
+                    <li><Link to="/auth/signup">Sign Up</Link></li>
+                  </div>
+                }
               </ul>
             </nav>
           </div>
@@ -34,6 +45,7 @@ class Header extends Component {
 }
 
 export default connect(
-  state => ({ error: state.error }),
-  null
+  state => ({ error: state.error,
+    user: state.user }),
+  { listenForUser, logout }
 )(Header);

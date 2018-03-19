@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { config } from './firebase';
+// import React, { Component } from 'react';
+// import { config } from './firebase';
 
 const clientID = 'TBY4FBFNODABHX5VOK32VECUDGO5RMBOJ3GF113SFWLML0ZD';
 const clientSecret = '021EF3LQK0AAKW2QW42VFVF3Z4FMZNOAMCNTZBIVBZMF3H0M';

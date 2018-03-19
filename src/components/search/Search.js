@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import SearchForm from './SearchForm';
+import { connect } from 'react-redux';
 import Results from '../results/Results';
 import { search } from '../../services/foursquareApi';
+import { searchQuery } from './actions';
+import { saveResults } from '../results/actions';
 
-export default class Search extends Component {
+class Search extends Component {
 
   handleSearch = (query) => {
+    this.props.searchQuery(query);
     search(query)
       .then(res => {
-        this.setState({ results: res.response.groups[0].items });
+        this.props.saveResults(res.response.groups[0].items);
       }
       );
   };
@@ -20,8 +24,13 @@ export default class Search extends Component {
     return (
       <div>
         <SearchForm onComplete={this.handleSearch}/>
-        <Results results={results}/>
+        {results && <Results results={results}/>}
       </div>
     );
   }
 }
+
+export default connect (
+  null,
+  ({ searchQuery, saveResults })
+)(Search);

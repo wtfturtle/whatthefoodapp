@@ -4,6 +4,7 @@ import promiseMiddleware from './promiseMiddleware';
 import { loading, error } from '../components/app/errorloading/reducers';
 import { user } from '../components/app/auth/reducers';
 import { searchTerm } from '../components/search/reducers';
+import { results } from '../components/results/reducers';
 
 // combine reducer
 const reducer = combineReducers({
@@ -11,7 +12,8 @@ const reducer = combineReducers({
   loading,
   error,
   user,
-  searchTerm
+  searchTerm,
+  results
 });
 
 // extension

@@ -28,7 +28,10 @@ class Header extends Component {
               <ul className="nav-ul">
                 <li><Link to="/">Home</Link></li>
                 {user 
-                  ? <li><Link to="/" onClick={logout}>Log Out</Link></li>
+                  ? <div>
+                    <li><Link to="/" onClick={logout}>Log Out</Link></li>
+                    <li>{user.email}</li>
+                  </div>
                   : <div>
                     <li><Link to="/auth/signin">Log In</Link></li>
                     <li><Link to="/auth/signup">Sign Up</Link></li>

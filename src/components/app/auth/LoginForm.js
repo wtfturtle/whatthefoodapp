@@ -30,6 +30,7 @@ class LoginForm extends PureComponent {
       .catch(error => this.setState({ error }));
   };
 
+
   render() {
     const { error } = this.state;
     const { buttonText, legendText } = this.props;

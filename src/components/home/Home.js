@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../app/App.css';
+
 
 class Home extends Component {
 
   render() { 
     return (
       <section className="main-container maxwidth-wrap">
-        Home
+        Search Button<br/>
+        Random Button
 
       </section>
     );

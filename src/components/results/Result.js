@@ -6,30 +6,21 @@ import { addVenue } from './actions';
 
 class Result extends Component {
 
-  handleAdd(event){ // needs work!
-    event.preventDefault();
-    addVenue(event.target);
-  }
-
+  // TODO: addVenue not working on button click. 
   render() {
-    const { name, url } = this.props.venue;
-    const { phone } = this.props.venue.contact || null;
+    const { name } = this.props.venue;
     const { address } = this.props.venue.location;
-    const { city } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
-    const { referralId } = this.props;
+    const { id } = this.props.venue;
     const { user } = this.props;
 
     return (
       <li className="result-li">
-        <h2><Link to={`/results/${referralId}`}>{name}</Link></h2> 
+        <h2><Link to={`/results/${id}`}>{name}</Link></h2> 
         <p>Price: {message}</p> 
         <p>{address}</p>
-        <p>{city}</p>
-        <p>{phone}</p>
-        <small>{url}</small>
         {user &&
-          <button onSubmit={this.handleAdd}>Save</button>} 
+          <button onClick={addVenue(this.id)}>Save</button>} 
         {/* button needs attention */}
       </li>
     );
@@ -40,5 +31,3 @@ export default connect(
   state => ({ user: state.user }),
   { addVenue }
 )(Result);
-
-// use referral ID to access single restaurant for detail page. Add save button under condition of user logged in. 

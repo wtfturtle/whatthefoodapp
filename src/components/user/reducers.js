@@ -17,9 +17,9 @@ export function add(state = [], { type, payload }) {
 export function listLoad(state = [], { type, payload }) {
   switch(type) {
     case LOAD_LIST:
-      return {
-        payload
-      };
+      return [
+        ...payload
+      ];
     default:
       return state;
   }

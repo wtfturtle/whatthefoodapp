@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-// import MyList from './MyList';
+import MyList from './MyList';
 import { connect } from 'react-redux';
-import { addList, loadList } from './actions';
+import { addList } from './actions';
 
 class User extends Component {
-
-  componentDidMount() {
-    this.props.loadList();
-  }
 
   state = {
     list: ''
@@ -29,8 +25,8 @@ class User extends Component {
 
   render() {
     const { list } = this.state;
-    const { user, listResults } = this.props;
-    if(!listResults) return null;
+    const { user } = this.props;
+
 
     return (
       <section className="main-container maxwidth-wrap">
@@ -45,24 +41,14 @@ class User extends Component {
           <button>Create List</button>
         </form>
 
-        {listResults.length ?
-          <ul>
-            {listResults.map(result => (
-              <li key={result.key}>{result.list}</li>
-            ))}
-          </ul>
-          :
-          <p>Empty List</p>
-        }
-        {/* <MyList/> */}
+        { user && <MyList user={user}/>}
+       
       </section>
     );
   }
 }
 
 export default connect(
-  state => ({ 
-    user: state.user,
-    listResults: state.listLoad.payload }),
-  { addList, loadList }
+  state => ({ user: state.user }),
+  { addList }
 )(User);

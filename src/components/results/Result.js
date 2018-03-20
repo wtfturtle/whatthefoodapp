@@ -41,4 +41,4 @@ export default connect(
   { addVenue }
 )(Result);
 
-// use referral ID to access single restaurant for detail page. Add save button under condition of user loged in. 
+// use referral ID to access single restaurant for detail page. Add save button under condition of user logged in. 

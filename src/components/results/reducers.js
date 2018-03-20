@@ -4,6 +4,7 @@ export const VENUE_REMOVE = 'VENUE_REMOVE';
 
 export function results(state = [], { type, payload }) {
   switch(type) {
+    
     case RESULTS_SAVE: 
       return payload;
 

@@ -24,7 +24,8 @@ export function loadList() {
 
     dispatch ({ 
       type: LOAD_LIST,
-      payload: users.child(uid).child('lists').once('value')
+      // payload: listByUser.child(uid).child('lists').once('value')
+      payload: listByUser.child(uid).once('value')
         .then(data => {
           const listResults = data.val();
           if(!listResults) return [];

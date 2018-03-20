@@ -20,7 +20,7 @@ class Random extends Component {
 
     return (
       <div>
-        <button onClick={this.handleClick}>randomize search</button>
+        <button onClick={this.handleClick}>Im not good at making decisions</button>
       </div>
     );
   }

@@ -8,7 +8,6 @@ class Results extends Component {
   render() {
 
     const { results } = this.props;
-    console.log(results);
 
     return (
       <Fragment>

@@ -29,10 +29,10 @@ class ResultDetail extends Component {
       <div>
         <h1>{name}</h1> 
         <p>Price: {message}</p> 
+        <small>{url}</small>
         <p>{address}</p>
         <p>{city}</p>
         <p>{phone}</p>
-        <small>{url}</small>
         {user &&
           <button onSubmit={this.props.addVenue(id)}>Save</button>} 
         {/* button function needs attention */}

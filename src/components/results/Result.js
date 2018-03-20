@@ -13,10 +13,8 @@ class Result extends Component {
   }
 
   render() {
-    const { name, url } = this.props.venue;
-    const { phone } = this.props.venue.contact || null;
+    const { name } = this.props.venue;
     const { address } = this.props.venue.location;
-    const { city } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
     const { id } = this.props.venue;
     const { user } = this.props;
@@ -26,9 +24,6 @@ class Result extends Component {
         <h2><Link to={`/results/${id}`}>{name}</Link></h2> 
         <p>Price: {message}</p> 
         <p>{address}</p>
-        <p>{city}</p>
-        <p>{phone}</p>
-        <small>{url}</small>
         {user &&
           <button onSubmit={this.handleAdd}>Save</button>} 
         {/* button needs attention */}

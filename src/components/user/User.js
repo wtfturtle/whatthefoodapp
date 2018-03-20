@@ -9,7 +9,6 @@ class User extends Component {
     list: ''
   };
 
-
   handleSubmit = event => {
     event.preventDefault();
     const { list } = this.state;
@@ -27,7 +26,7 @@ class User extends Component {
   render() {
     const { list } = this.state;
     const { user } = this.props;
-    
+
 
     return (
       <section className="main-container maxwidth-wrap">
@@ -37,12 +36,13 @@ class User extends Component {
         <form onSubmit={this.handleSubmit}>
           <legend>Create List</legend>
           <label htmlFor="listTitle">
-            <input id="listTitle" name={list} onChange={this.handleChange}/>
+            <input id="listTitle" value={list} onChange={this.handleChange}/>
           </label>
           <button>Create List</button>
         </form>
 
-        <MyList/>
+        { user && <MyList user={user}/>}
+       
       </section>
     );
   }

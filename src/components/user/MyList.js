@@ -6,8 +6,10 @@ class MyList extends Component {
 
   render() {
 
-    return(
-
+    return (
+      <div>
+        list goes here
+      </div>
     );
   }
 }

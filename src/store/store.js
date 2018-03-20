@@ -6,18 +6,18 @@ import { user } from '../components/app/auth/reducers';
 import { searchTerm } from '../components/search/reducers';
 import { listLoad } from '../components/user/reducers';
 import { results, retrieve, userVenues } from '../components/results/reducers';
+import { randomSearch } from '../components/random/reducers';
 
-// combine reducer
+
 const reducer = combineReducers({
-  //somthing
   loading,
   error,
   user,
   searchTerm,
   results,
-  retrieve,
+  listLoad,
   userVenues,
-  listLoad
+  randomSearch
 });
 
 // extension

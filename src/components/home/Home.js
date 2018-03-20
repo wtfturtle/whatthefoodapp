@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import '../app/app.css';
 import Search from '../search/Search';
 import Results from '../results/Results';
+import Random from '../random/Random';
 
 class Home extends Component {
 
@@ -12,6 +13,7 @@ class Home extends Component {
       <section className="main-container maxwidth-wrap">
         Home
         <Search/>
+        <Random/>
         <Results/>
       </section>
     );

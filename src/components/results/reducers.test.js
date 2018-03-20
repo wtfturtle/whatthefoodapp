@@ -1,16 +1,17 @@
-import { results, userVenues, RESULTS_LOAD, VENUE_ADD } from './reducers';
+import { results, userVenues, VENUE_ADD, VENUE_REMOVE } from './reducers';
 
 describe('Results reducer tests:', () => {
+
+  const sample = {
+    name: 'Voodoo',
+    id: 111,
+    price: 'moderate',
+    location: 'Portland'
+  }
 
   it('defaults to an empty array for query', () => {
     const state = results(undefined, {});
     expect(state).toEqual([]);
-  });
-
-  it.skip('sets a query term', () => {
-    const state = results(undefined, { type: RESULTS_LOAD, payload: { name: 'voodoo' } });
-    expect(state.name).toEqual('voodoo');
-    
   });
 
   it('defaults to empty array for venues', () => {
@@ -19,7 +20,12 @@ describe('Results reducer tests:', () => {
   });
 
   it('adds a venue to user venues', () => {
-    const state = userVenues(undefined, { type: VENUE_ADD, payload: { name: 'voodoo' } });
-    expect(state).toEqual([{ name: 'voodoo' }]);
+    const state = userVenues(undefined, { type: VENUE_ADD, payload: sample });
+    expect(state).toEqual([sample]);
+  });
+
+  it('removes a venue from user list', () => {
+    const state = userVenues([sample], { type: VENUE_REMOVE, payload: 111 });
+    expect(state).toEqual([]);
   });
 });

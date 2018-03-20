@@ -2,14 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import './result.css';
 import Result from './Result';
-import { loadResults } from './actions';
 
 class Results extends Component {
 
   render() {
 
     const { results } = this.props;
-    console.log(results);
 
     return (
       <Fragment>
@@ -26,5 +24,5 @@ class Results extends Component {
 
 export default connect(
   ({ results }) => ({ results }),
-  ({ loadResults })
+  null
 )(Results);

@@ -24,8 +24,8 @@ class Result extends Component {
         <img src={imageUrl} alt="restaurant"></img>
         <p>Price: {message}</p> 
         <p>{address}</p>
-        {user &&
-          <button onClick={addVenue(this.id)}>Save</button>} 
+        {/* {user && */}
+          // <button onClick={addVenue(this.id)}>Save</button>} 
         {/* button needs attention */}
       </li>
     );

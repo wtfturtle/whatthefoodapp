@@ -26,14 +26,14 @@ class MyList extends Component {
     // const { user } = this.props;
     const { user, listResults } = this.props;
     // if(!listResults || !user) return null;
-    console.log(user);
+    console.log(listResults);
 
     return (
       <div>
         {listResults ?
           <ul>
             {listResults.map(result => (
-              <li key={result.key}>{result.list}</li>
+              <li key={result.key}>{result.name}</li>
             ))}
           </ul>
           :
@@ -47,7 +47,7 @@ class MyList extends Component {
 }
 
 export default connect(
-  state => ({ listResults: state.listLoad.payload }),
+  state => ({ listResults: state.listLoad }),
   { loadList }
 )(MyList);
 

@@ -6,22 +6,24 @@ import { addVenue } from './actions';
 
 class Result extends Component {
 
-  // TODO: addVenue not working on button click. 
+  // TODO: addVenue not working on button click - will resolve once firebase all set. 
   render() {
-    const { name } = this.props.venue;
+    const path = this.props.venue.photos.groups[0].items[0];
+    const imageUrl = `${path.prefix}250x250${path.suffix}`;
+    const { name, id } = this.props.venue;
     const { address } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
-    const { id } = this.props.venue;
     const { user } = this.props;
 
     return (
       <li className="result-li">
+        <img src={imageUrl} alt="restaurant"></img>src={imageUrl}
         <h2><Link to={`/results/${id}`}>{name}</Link></h2> 
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user &&
           <button onClick={addVenue(this.id)}>Save</button>} 
-        {/* button needs attention */}
+        {/* button needs attention - see above */}
       </li>
     );
   }

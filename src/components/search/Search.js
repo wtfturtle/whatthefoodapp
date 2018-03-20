@@ -3,13 +3,13 @@ import SearchForm from './SearchForm';
 import { connect } from 'react-redux';
 import Results from '../results/Results';
 import { search } from '../../services/foursquareApi';
-import { searchQuery } from './actions';
+import { saveQuery } from './actions';
 import { saveResults } from '../results/actions';
 
 class Search extends Component {
 
   handleSearch = (query) => {
-    this.props.searchQuery(query);
+    this.props.saveQuery(query);
     search(query)
       .then(res => {
         this.props.saveResults(res.response.groups[0].items);
@@ -32,5 +32,5 @@ class Search extends Component {
 
 export default connect (
   null,
-  ({ searchQuery, saveResults })
+  ({ saveQuery, saveResults })
 )(Search);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './result.css';
 
@@ -11,12 +11,19 @@ class Result extends Component {
     const { phone } = this.props.venue.contact || null;
     const { address } = this.props.venue.location;
     const { city } = this.props.venue.location;
+    // const { message } = this.props.venue.price || null;
+    const id = this.props.venue.referralId;
 
-    console.log(address);
     return (
       <li className="result-li">
-        {name} {url} {phone} {address} {city}
-        {/* <Link to={`/results/${id}`}>{name}</Link> */}
+        <h2><Link to={`/results/${id}`}>{name}</Link></h2> 
+        {/* {message ?
+          <p>Price: {message}</p> 
+          : null} */}
+        <p>{address}</p>
+        <p>{city}</p>
+        <p>{phone}</p>
+        <small>{url}</small>
       </li>
     );
   }

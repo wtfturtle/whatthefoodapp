@@ -11,7 +11,7 @@ class Random extends Component {
   handleClick = () => {
     search({ query: this.props.getRandom().payload })
       .then(res => {
-        this.props.saveResults([res.response.groups[0].items[0]]);
+        this.props.saveResults([res.response.groups[0].items[Math.floor(Math.random() * 30)]]);
       }
       );
   };

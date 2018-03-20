@@ -14,6 +14,10 @@ class ResultDetail extends Component {
       return element.venue.id === id;
     });
 
+    const path = result.venue.photos.groups[0].items[0] || null;
+    
+    const imageUrl = `${path.prefix}original${path.suffix}` || null;
+
     const { name, url } = result.venue;
     const { phone } = result.venue.contact || null;
     const { address } = result.venue.location;
@@ -28,6 +32,7 @@ class ResultDetail extends Component {
     return (
       <div>
         <h1>{name}</h1> 
+        <img src={imageUrl} alt="restaurant"></img>
         <p>Price: {message}</p> 
         <small>{url}</small>
         <p>{address}</p>

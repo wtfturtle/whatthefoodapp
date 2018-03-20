@@ -8,6 +8,10 @@ class Result extends Component {
 
   // TODO: addVenue not working on button click. 
   render() {
+
+    const path = this.props.venue.photos.groups[0].items[0] || null;
+    
+    const imageUrl = `${path.prefix}original${path.suffix}` || null;
     const { name } = this.props.venue;
     const { address } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
@@ -17,6 +21,7 @@ class Result extends Component {
     return (
       <li className="result-li">
         <h2><Link to={`/results/${id}`}>{name}</Link></h2> 
+        <img src={imageUrl} alt="restaurant"></img>
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user &&

@@ -3,13 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../app.css';
 import Error from '../errorloading/Error';
-import { listenForUser, logout } from '../auth/actions';
+import { logout } from '../auth/actions';
 
 class Header extends Component {
-
-  componentDidMount() {
-    this.props.listenForUser();
-  }
 
   render() { 
     const { error, logout, user } = this.props;
@@ -50,5 +46,5 @@ class Header extends Component {
 export default connect(
   state => ({ error: state.error,
     user: state.user }),
-  { listenForUser, logout }
+  { logout }
 )(Header);

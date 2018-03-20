@@ -1,6 +1,6 @@
 import { QUERY } from './reducers';
 
-export function searchQuery(term) {
+export function saveQuery(term) {
   return {
     type: QUERY,
     payload: term

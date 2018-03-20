@@ -5,7 +5,7 @@ const clientID = 'TBY4FBFNODABHX5VOK32VECUDGO5RMBOJ3GF113SFWLML0ZD';
 const clientSecret = '021EF3LQK0AAKW2QW42VFVF3Z4FMZNOAMCNTZBIVBZMF3H0M';
 
 const BASE_URL = `https://api.foursquare.com/v2/venues/explore?client_id=${clientID}&client_secret=${clientSecret}&near=Portland,OR&`;
-// const BASE_URL = `https://api.foursquare.com/v2/venues/explore?client_id=${clientID}&client_secret=${clientSecret}&near=Portland,OR&query=${query}&v=20180312`;
+// const BASE_URL = `https://api.foursquare.com/v2/venues/client_id=TBY4FBFNODABHX5VOK32VECUDGO5RMBOJ3GF113SFWLML0ZD&client_secret=021EF3LQK0AAKW2QW42VFVF3Z4FMZNOAMCNTZBIVBZMF3H0M&near=Portland,OR&query=${query}&v=20180312`;
 // add lat and long before query... '&ll=...'
 
 // const get = url => fetch(url) 

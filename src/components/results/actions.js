@@ -7,7 +7,6 @@ export function saveResults(results) {
     type: RESULTS_SAVE,
     payload: results
   };
-
 }
 
 export function loadResults(results) {
@@ -17,9 +16,11 @@ export function loadResults(results) {
   };
 }
 
-export function addVenue(venue) {
+export function addVenue(id) {
   return {
     type: VENUE_ADD,
-    payload: venue
+    payload: id
   };
 }
+
+//TODO: removeVenue, editVenue

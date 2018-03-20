@@ -1,18 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './result.css';
+import { addVenue, removeVenue, editVenue } from './actions';
 
 class ResultDetail extends Component {
 
   render() {
 
-    return(
-      
+    const { id } = this.props.match.params; //will need for saving restaurant
+    const { results } = this.props;
+
+    const result = results.find(element => {
+      return element.venue.id === id;
+    });
+
+    const { name, url } = result.venue;
+    const { phone } = result.venue.contact || null;
+    const { address } = result.venue.location;
+    const { city } = result.venue.location;
+    const { message } = result.venue.price || 'Not Listed';
+    const { user } = this.props;
+
+    // TODO: add conditional (after user check) to see if rest. is saved. If so, show edit and remove buttons.
+    // If user and rest saved, call component that shows user's input about rest. (Notes, rating, what list)
+    // if editing, provide forms for editing data in those fields. 
+
+    return (
+      <div>
+        <h1>{name}</h1> 
+        <p>Price: {message}</p> 
+        <p>{address}</p>
+        <p>{city}</p>
+        <p>{phone}</p>
+        <small>{url}</small>
+        {user &&
+          <button onSubmit={this.props.addVenue(id)}>Save</button>} 
+        {/* button function needs attention */}
+      </div>
     );
   }
 }
 
 export default connect(
-  null,
-  null
+  state => ({ 
+    user: state.user, 
+    results: state.results }),
+  { addVenue, removeVenue, editVenue }
 )(ResultDetail);

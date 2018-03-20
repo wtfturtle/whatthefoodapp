@@ -10,6 +10,7 @@ import Login from './login/Login';
 import CreateLogin from './login/CreateLogin';
 import { Signin, Signup } from './auth/LoginForm';
 import User from '../user/User';
+import RestaurantDetail from '../results/RestaurantDetail';
 import { listenForUser } from './auth/actions';
 
 class App extends Component {
@@ -35,7 +36,7 @@ class App extends Component {
                 <Route path="/auth/signin" component={Signin}/>
                 <Route path="/auth/signup" component={Signup}/>
                 <Route path="/user" component={User}/>
-                {/* <Route path="/movies/:id" render={({ match }) => <MovieDetail imdbID={match.params.id}/>}/> */}
+                <Route path="/results/:id" component={RestaurantDetail}/>
                 <Redirect to="/"/>
               </Switch>
             </main>
@@ -49,6 +50,8 @@ class App extends Component {
 }
 
 export default connect(
-  state => ({ user: state.user }),
+  state => ({ 
+    user: state.user,
+  }),
   { listenForUser }
 )(App);

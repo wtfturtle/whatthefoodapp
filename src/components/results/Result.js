@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './result.css';
 import { addVenue } from './actions';
+import RestaurantDetail from './RestaurantDetail';
 
 class Result extends Component {
 
@@ -17,12 +18,12 @@ class Result extends Component {
     const { address } = this.props.venue.location;
     const { city } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
-    const { referralId } = this.props;
+    const { id } = this.props.venue;
     const { user } = this.props;
 
     return (
       <li className="result-li">
-        <h2><Link to={`/results/${referralId}`}>{name}</Link></h2> 
+        <h2><Link to={`/results/${id}`}>{name}</Link></h2> 
         <p>Price: {message}</p> 
         <p>{address}</p>
         <p>{city}</p>

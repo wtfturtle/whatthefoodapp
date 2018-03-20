@@ -13,5 +13,13 @@ export const places =
   'Burgers',
   'Junk',
   'Ice Cream',
-  'Tacos'
+  'Tacos',
+  'Sushi',
+  'Sandwiches',
+  'Wings',
+  'Pub',
+  'Pie',
+  'Ramen',
+  'Arepa',
+  'Bento',
 ];

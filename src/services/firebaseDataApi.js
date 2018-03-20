@@ -7,7 +7,7 @@ export const listByUser = db.ref('listByUser');
 // user key
   // list1:name
 
-export const list = db.ref('lists');
+export const lists = db.ref('lists');
 // list1
   // place1
   // place2

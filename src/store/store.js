@@ -4,15 +4,18 @@ import promiseMiddleware from './promiseMiddleware';
 import { loading, error } from '../components/app/errorloading/reducers';
 import { user } from '../components/app/auth/reducers';
 import { searchTerm } from '../components/search/reducers';
+import { results, retrieve, userVenues } from '../components/results/reducers';
+import { randomSearch } from '../components/random/reducers';
 import { results, userVenues } from '../components/results/reducers';
 
-// combine reducer
 const reducer = combineReducers({
   loading,
   error,
   user,
   searchTerm,
   results,
+  userVenues,
+  randomSearch
   userVenues
 });
 

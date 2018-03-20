@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './app.css';
 import Loading from './errorloading/Loading';
 import Header from './header/Header';
@@ -8,9 +9,14 @@ import Home from '../home/Home';
 import Login from './login/Login';
 import CreateLogin from './login/CreateLogin';
 import { Signin, Signup } from './auth/LoginForm';
-import { User } from '../user/User';
+import User from '../user/User';
+import { listenForUser } from './auth/actions';
 
-export default class App extends Component {
+class App extends Component {
+
+  componentDidMount() {
+    this.props.listenForUser();
+  }
 
   render() {
     
@@ -41,3 +47,8 @@ export default class App extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({ user: state.user }),
+  { listenForUser }
+)(App);

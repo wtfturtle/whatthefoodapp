@@ -6,27 +6,27 @@ import { loadResults } from './actions';
 
 class Results extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      results: []
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     results: []
+  //   };
+  // }
 
-  componentDidMount() {
-    this.props.loadResults();
-  }
+  // componentDidMount() {
+  //   this.props.loadResults();
+  // }
 
   render() {
 
-    const { results } = this.state;
+    const { results } = this.props;
     console.log(results);
 
     return (
       <Fragment>
         {results ? 
           <ul className="result-ul">
-            {results.map(result => <Result key={result.id} {...result}/>)}
+            {results.map((result, index) => <Result key={index} {...result}/>)}
           </ul>
           : null
         }

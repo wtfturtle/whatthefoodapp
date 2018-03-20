@@ -3,7 +3,8 @@ import thunk from 'redux-thunk';
 import promiseMiddleware from './promiseMiddleware';
 import { loading, error } from '../components/app/errorloading/reducers';
 import { user } from '../components/app/auth/reducers';
-import { search } from '../components/search/reducers';
+import { searchTerm } from '../components/search/reducers';
+import { results, retrieve } from '../components/results/reducers';
 
 // combine reducer
 const reducer = combineReducers({
@@ -11,7 +12,9 @@ const reducer = combineReducers({
   loading,
   error,
   user,
-  search
+  searchTerm,
+  results,
+  retrieve
 });
 
 // extension

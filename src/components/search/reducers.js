@@ -1,10 +1,11 @@
 export const QUERY = 'QUERY';
 
-export function search(state = '', { type, payload }) {
+
+export function searchTerm(state = '', { type, payload }) {
   switch(type) {
 
     case QUERY:
-      return payload;
+      return payload.query;
     
     default:
       return state;

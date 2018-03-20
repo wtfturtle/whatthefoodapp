@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import MyList from './MyList';
+// import MyList from './MyList';
 import { connect } from 'react-redux';
-import { addList } from './actions';
+import { addList, loadList } from './actions';
 
 class User extends Component {
+
+  componentDidMount() {
+    this.props.loadList();
+  }
 
   state = {
     list: ''
   };
-
 
   handleSubmit = event => {
     event.preventDefault();
@@ -26,8 +29,8 @@ class User extends Component {
 
   render() {
     const { list } = this.state;
-    const { user } = this.props;
-    
+    const { user, listResults } = this.props;
+    if(!listResults) return null;
 
     return (
       <section className="main-container maxwidth-wrap">
@@ -37,18 +40,29 @@ class User extends Component {
         <form onSubmit={this.handleSubmit}>
           <legend>Create List</legend>
           <label htmlFor="listTitle">
-            <input id="listTitle" name={list} onChange={this.handleChange}/>
+            <input id="listTitle" value={list} onChange={this.handleChange}/>
           </label>
           <button>Create List</button>
         </form>
 
-        <MyList/>
+        {listResults.length ?
+          <ul>
+            {listResults.map(result => (
+              <li key={result.key}>{result.list}</li>
+            ))}
+          </ul>
+          :
+          <p>Empty List</p>
+        }
+        {/* <MyList/> */}
       </section>
     );
   }
 }
 
 export default connect(
-  state => ({ user: state.user }),
-  { addList }
+  state => ({ 
+    user: state.user,
+    listResults: state.listLoad.payload }),
+  { addList, loadList }
 )(User);

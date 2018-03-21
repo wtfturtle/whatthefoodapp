@@ -16,7 +16,6 @@ class Remove extends Component {
     return (
       <button onClick={() => this.handleRemove(Object.keys(venueLoad[id])[0], id)}>Remove</button>
     );
-
   }
 }
 

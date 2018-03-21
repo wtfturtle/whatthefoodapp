@@ -8,20 +8,6 @@ import Remove from '../buttons/Remove';
 
 class Result extends Component {
 
-  state = {
-    clicked: false
-  };
-
-  handleClick = event => {
-    event.preventDefault();
-    this.setState({ clicked: true });
-  };
-
-  handleUnclick = event => {
-    event.preventDefault();
-    this.setState({ clicked: false });
-  };
-
   render() {
 
     const path = this.props.venue.photos.groups[0].items[0] || null;
@@ -31,7 +17,6 @@ class Result extends Component {
     const { message } = this.props.venue.price || 'Not Listed';
     const { id } = this.props.venue;
     const { user, venueLoad } = this.props;
-    const { clicked } = this.state;
 
     return (
       <li className="result-li">
@@ -42,11 +27,9 @@ class Result extends Component {
         {user && 
           (venueLoad[id] ? // check if venue exists for user already. If so, give remove option:
             <Remove venue={this.props.venue}/> 
-            : (clicked ? 
-              <Add venue={this.props.venue}/>
-              : <button onClick={this.handleClick}>Save</button>
-            )        
-          )
+            :  
+            <Add venue={this.props.venue}/>
+          )        
         } 
       </li>
     );

@@ -4,6 +4,20 @@ import { addVenue } from '../results/actions';
 
 class Add extends Component {
 
+  state = {
+    clicked: false
+  };
+
+  handleClick = event => {
+    event.preventDefault();
+    this.setState({ clicked: true });
+  };
+
+  handleUnclick = event => {
+    event.preventDefault();
+    this.setState({ clicked: false });
+  };
+
   handleAdd = (listId, venueId, name) => {
     this.props.addVenue(listId, venueId, name);
     this.setState({ clicked: false });
@@ -13,18 +27,22 @@ class Add extends Component {
 
     const { id } = this.props.venue;
     const { lists } = this.props;
+    const { clicked } = this.state;
 
     return (
-      <div>
-        <button onClick={this.handleUnclick}>X</button>
-        <ul>
-          {lists.map((list, index) => (
-            <li key={index}>
-              <button onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      (clicked ?
+        <div>
+          <button onClick={this.handleUnclick}>X</button>
+          <ul>
+            {lists.map((list, index) => (
+              <li key={index}>
+                <button onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        : <button onClick={this.handleClick}>Save</button>
+      )
     );
   }
 }

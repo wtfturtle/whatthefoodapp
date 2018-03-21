@@ -1,5 +1,5 @@
-import { ADD_LIST, LOAD_LIST } from './reducers';
-import { listByUser, users } from '../../services/firebaseDataApi';
+import { ADD_LIST, LOAD_LIST, VENUE_LOAD } from './reducers';
+import { listByUser, users, lists } from '../../services/firebaseDataApi';
 
 export function addList(list) {
   return (dispatch, getState) => {
@@ -20,7 +20,7 @@ export function loadList() {
     // create initial user node, child and email 
     users.child(uid).child('email').set(email);
     
-    dispatch ({ 
+    return dispatch ({ 
       type: LOAD_LIST,
       payload: listByUser.child(uid).once('value')
         .then(data => {
@@ -38,6 +38,34 @@ export function loadList() {
           }
 
         })
+    });
+  };
+}
+
+export function loadVenues() {
+  return (dispatch, getState) => {
+    
+    const { listLoad } = getState();
+    
+    listLoad.forEach(({ key }) => {
+      lists.child(key).once('value')
+        .then(data => {
+          const val = data.val();
+          return val ? 
+            Object.keys(val) : [];
+        }
+        )
+        .then(venueKeys => {
+          venueKeys.forEach(venueKey => {
+            dispatch ({
+              type: VENUE_LOAD,
+              payload: {
+                listKey: key,
+                venueKey
+              } 
+            });
+          });
+        });
     });
   };
 }

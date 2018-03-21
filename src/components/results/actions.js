@@ -9,15 +9,19 @@ export function saveResults(results) {
   };
 }
 
+//need to check if venue is already in places
 export function addVenue(listId, venueId, name) {
   return (dispatch) => {
-    lists.child(listId).child(venueId).set(true); // this line is the problem
-    places.child(venueId).child('name').set(name);
+    lists.child(listId).child(venueId).set(true); 
+    if(!places.child(venueId)) {
+      places.child(venueId).child('name').set(name);
+    }
     dispatch({
       type: VENUE_ADD,
       payload: {
         venueId,
-        name
+        name,
+        listId
       }
     });
   };
@@ -29,5 +33,3 @@ export function removeVenue(id) {
     payload: id
   };
 }
-
-//TODO: editVenue

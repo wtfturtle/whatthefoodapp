@@ -33,7 +33,7 @@ class Result extends Component {
     const { address } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
     const { id } = this.props.venue;
-    const { user, lists } = this.props;
+    const { user, lists, venueLoad } = this.props;
     const { clicked } = this.state;
 
     return (
@@ -43,18 +43,21 @@ class Result extends Component {
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 
-          (clicked ? 
-            <div>
-              <button onClick={this.handleUnclick}>X</button>
-              <ul>
-                {lists.map((list, index) => (
-                  <li key={index}>
-                    <button onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            : <button onClick={this.handleClick}>Save</button>
+          (venueLoad[id] ?
+            <button>Remove</button> 
+            : (clicked ? 
+              <div>
+                <button onClick={this.handleUnclick}>X</button>
+                <ul>
+                  {lists.map((list, index) => (
+                    <li key={index}>
+                      <button onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              : <button onClick={this.handleClick}>Save</button>
+            )        
           )
         } 
       </li>
@@ -65,7 +68,8 @@ class Result extends Component {
 export default connect(
   state => ({ 
     user: state.user,
-    lists: state.listLoad
+    lists: state.listLoad,
+    venueLoad: state.venueLoad
   }),
   { addVenue }
 )(Result);

@@ -2,6 +2,7 @@ import { onUserStateChanged, onSignUp, onSignIn, onSignOut } from '../../../serv
 import { USER } from './reducers'
 import { loadList } from '../../user/actions';
 
+
 export function listenForUser() {
   return dispatch => {
     onUserStateChanged(user => {

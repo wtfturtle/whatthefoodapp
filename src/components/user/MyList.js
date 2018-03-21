@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './mylist.css';
-import { loadList } from './actions';
+import { loadList, createDefaultList } from './actions';
 
 class MyList extends Component {
+
+  // componentDidMount() {
+  //   if(list !== null) {
+  //     createDefaultList()
+  //   }
+  // }
 
   render() {
 

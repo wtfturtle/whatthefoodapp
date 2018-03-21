@@ -1,5 +1,5 @@
 import { ADD_LIST, LOAD_LIST } from './reducers';
-import { listByUser } from '../../services/firebaseDataApi';
+import { listByUser, users } from '../../services/firebaseDataApi';
 
 export function addList(list) {
   return (dispatch, getState) => {
@@ -19,6 +19,33 @@ export function loadList() {
     
     // create initial user node, child and email 
     users.child(uid).child('email').set(email);
+    
+    dispatch ({ 
+      type: LOAD_LIST,
+      payload: listByUser.child(uid).once('value')
+        .then(data => {
+          const listResults = data.val();
+          
+          if(!listResults) {
+            listByUser.child(uid).push('default'); //add default list here
+            return;
+          } else {
+            const results = Object.keys(listResults).map(key => {
+              const name = listResults[key];
+              return { key, name };
+            });
+            return results;
+          }
+
+        })
+    });
+  };
+}
+
+export function createDefaultList() {
+  return (dispatch, getState) => {
+    
+    const { uid } = getState().user;
 
     // create default list reference in listByUser. NEED TO FIX, NEED TO FIRE ONCE ONLY
     listByUser.child(uid).push('default');

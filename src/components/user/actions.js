@@ -15,7 +15,14 @@ export function addList(list) {
 export function loadList() {
   return (dispatch, getState) => {
     
-    const { uid } = getState().user;
+    const { uid, email } = getState().user;
+    
+    // create initial user node, child and email 
+    users.child(uid).child('email').set(email);
+
+    // create default list reference in listByUser. NEED TO FIX, NEED TO FIRE ONCE ONLY
+    listByUser.child(uid).push('default');
+    
 
     dispatch ({ 
       type: LOAD_LIST,

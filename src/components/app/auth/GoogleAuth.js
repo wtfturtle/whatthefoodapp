@@ -24,10 +24,10 @@ class GoogleAuth extends PureComponent {
       },
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       signInOptions: [
-        {
-          provider: providers.EmailAuthProvider.PROVIDER_ID,
-          requireDisplayName: false
-        },
+        // {
+        //   provider: providers.EmailAuthProvider.PROVIDER_ID,
+        //   requireDisplayName: false
+        // },
         providers.GoogleAuthProvider.PROVIDER_ID
       ]
     });

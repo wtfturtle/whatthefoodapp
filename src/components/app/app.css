@@ -136,7 +136,9 @@
 /* ----- Burger Media Query ----- */
 
 @media (max-width: 550px) {
-
+  .flex-li {
+    flex-direction: column;
+  }
   #main-menu {
     position: absolute;
     transform: translate(0, -100%);

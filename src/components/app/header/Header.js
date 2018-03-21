@@ -51,12 +51,13 @@ class Header extends Component {
 
             <div id="burger"><span></span><span></span><span></span></div>
             <nav id="main-menu">
+              <h1 className="mobile-logo">What The Food</h1>
               <ul className="nav-ul">
                 <li><Link to="/" onClick={this.handleClick}>Home</Link></li>
                 {user 
                   ? <div className="flex-li">
-                    <li className="flex-li-child"><Link to="/user" onClick={this.handleClick}>{user && <span>Hello, {user.name}</span>}</Link></li>
-                    <li className="flex-li-child"><Link to="/" onClick={this.handleLogout}>Log Out</Link></li>
+                    <li><Link to="/user" onClick={this.handleClick}>{user && <span>Hello, {user.name}</span>}</Link></li>
+                    <li><Link to="/" onClick={this.handleLogout}>Log Out</Link></li>
                   </div>
                   : <div className="flex-li">
                     <li className="flex-li-child"><Link to="/auth/signin" onClick={this.handleClick}>Log In</Link></li>

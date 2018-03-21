@@ -80,6 +80,9 @@
 /* ----- Media Queries ----- */
 
 @media (min-width: 200px) {
+  .mobile-logo{
+    display: none;
+  }
   .logo {
     font-size: 1.3rem;
     padding: 7px 0 0;
@@ -106,6 +109,10 @@
 }
 
 @media (min-width: 550px) {
+
+  .mobile-logo {
+    display: none;
+  }
   #header {
     padding: 2rem;
   }
@@ -136,15 +143,16 @@
 /* ----- Burger Media Query ----- */
 
 @media (max-width: 550px) {
-  .logo {
-    z-index: 100;
+  .mobile-logo {
+    display: contents;
+    font-size: 30px;
   }
   .nav-ul{
     font-size: 30px;
     flex-direction: column;
     text-align: right;
-    padding-top: 2rem;
-    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-right: 2.5rem;
   }
   
   .flex-li {
@@ -169,6 +177,8 @@
     width: 100%;
     height: 100vh;
     background-color: white;
+    padding-top: 1.3rem;
+    padding-left: 1rem;
   }
 
   #burger span {

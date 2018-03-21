@@ -6,6 +6,24 @@ import { addVenue } from './actions';
 
 class Result extends Component {
 
+  state = {
+    clicked: false
+  };
+
+  handleClick = event => {
+    event.preventDefault();
+    this.setState({ clicked: true });
+  };
+
+  handleUnclick = event => {
+    event.preventDefault();
+    this.setState({ clicked: false });
+  };
+
+  handleAdd = (listId, venueId, name) => {
+    this.props.addVenue(listId, venueId, name);
+  };
+
   render() {
 
     const path = this.props.venue.photos.groups[0].items[0] || null;
@@ -14,7 +32,8 @@ class Result extends Component {
     const { address } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
     const { id } = this.props.venue;
-    const { user } = this.props;
+    const { user, lists } = this.props;
+    const { clicked } = this.state;
 
     return (
       <li className="result-li">
@@ -23,14 +42,29 @@ class Result extends Component {
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 
-         <button>Save</button>} 
+          (clicked ? 
+            <div>
+              <button onClick={this.handleUnclick}>X</button>
+              <ul>
+                {lists.map((list, index) => (
+                  <li key={index}>
+                    <button onSubmit={this.handleAdd(list.key, id, name)}>{list.name}</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            : <button onClick={this.handleClick}>Save</button>
+          )
+        } 
       </li>
     );
   }
 }
 
-// onClick={this.props.addVenue(this.id)}
 export default connect(
-  state => ({ user: state.user }),
+  state => ({ 
+    user: state.user,
+    lists: state.listLoad
+  }),
   { addVenue }
 )(Result);

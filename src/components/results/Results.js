@@ -14,7 +14,7 @@ class Results extends Component {
       <Fragment>
         {results ? 
           <ul className="result-ul">
-            {results.map((result, index) => <Result key={index} {...result} user={user}/>)}
+            {results.map((result, index) => <Result key={index} {...result}/>)}
           </ul>
           : null
         }

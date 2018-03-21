@@ -48,7 +48,7 @@ class Result extends Component {
               <ul>
                 {lists.map((list, index) => (
                   <li key={index}>
-                    <button onSubmit={this.handleAdd(list.key, id, name)}>{list.name}</button>
+                    <button onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
                   </li>
                 ))}
               </ul>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './result.css';
 import { addVenue, removeVenue, editVenue } from './actions';
+import Rating from '../edit/Rating';
 
 class ResultDetail extends Component {
 
@@ -40,6 +41,10 @@ class ResultDetail extends Component {
         <p>{phone}</p>
         {user &&
           <button onClick={addVenue(this.id)}>Save</button>} 
+
+        <div>
+          <Rating/>
+        </div>  
       </div>
     );
   }

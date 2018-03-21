@@ -136,8 +136,27 @@
 /* ----- Burger Media Query ----- */
 
 @media (max-width: 550px) {
+  .logo {
+    z-index: 100;
+  }
+  .nav-ul{
+    font-size: 30px;
+    flex-direction: column;
+    text-align: right;
+    padding-top: 2rem;
+    padding-right: 1rem;
+  }
+  
   .flex-li {
     flex-direction: column;
+    font-size: 30px;
+    text-align: right;
+    padding: 1rem 0;
+
+  .flex-li-child {
+      padding: 1rem 0;
+    }
+    
   }
   #main-menu {
     position: absolute;

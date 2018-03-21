@@ -43,7 +43,9 @@ class Result extends Component {
               <button onClick={this.handleUnclick}>X</button>
               <ul>
                 {lists.map(list => (
-                  <li key={list.key}>{list.name}</li>
+                  <li key={list.key}>
+                    <button onClick={addVenue(list.key, id, name)}>{list.name}</button>
+                  </li>
                 ))}
               </ul>
             </div>

@@ -6,6 +6,20 @@ import { addVenue } from './actions';
 
 class Result extends Component {
 
+  state = {
+    clicked: false
+  }
+
+  handleClick = event => {
+    event.preventDefault();
+    this.setState({ clicked: true });
+  };
+
+  handleUnclick = event => {
+    event.preventDefault();
+    this.setState({ clicked: false });
+  };
+
   render() {
 
     const path = this.props.venue.photos.groups[0].items[0] || null;
@@ -14,7 +28,8 @@ class Result extends Component {
     const { address } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
     const { id } = this.props.venue;
-    const { user } = this.props;
+    const { user, lists } = this.props;
+    const { clicked } = this.state;
 
     return (
       <li className="result-li">
@@ -23,14 +38,27 @@ class Result extends Component {
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 
-         <button>Save</button>} 
+          (clicked ? 
+            <div>
+              <button onClick={this.handleUnclick}>X</button>
+              <ul>
+                {lists.map(list => (
+                  <li key={list.key}>{list.name}</li>
+                ))}
+              </ul>
+            </div>
+            : <button onClick={this.handleClick}>Save</button>
+          )
+        } 
       </li>
     );
   }
 }
 
-// onClick={this.props.addVenue(this.id)}
 export default connect(
-  state => ({ user: state.user }),
+  state => ({ 
+    user: state.user,
+    lists: state.listLoad
+  }),
   { addVenue }
 )(Result);

@@ -1,5 +1,5 @@
 import { RESULTS_SAVE, VENUE_ADD, VENUE_REMOVE } from './reducers';
-import { lists } from '../../services/firebaseDataApi';
+import { lists, places } from '../../services/firebaseDataApi';
 
 
 export function saveResults(results) {
@@ -9,15 +9,15 @@ export function saveResults(results) {
   };
 }
 
-export function addVenue(listId, venueId) {
+export function addVenue(listId, venueId, name) {
   return (dispatch) => {
     lists.child(listId).child(venueId).set(true); 
-    console.log(venueId);
+    places.child(venueId).child('name').set(name);
     dispatch({
       type: VENUE_ADD,
       payload: {
-        listId,
-        venueId
+        venueId,
+        name
       }
     });
   };

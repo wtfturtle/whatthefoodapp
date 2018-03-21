@@ -1,5 +1,5 @@
 import { ADD_LIST, LOAD_LIST } from './reducers';
-import { listByUser } from '../../services/firebaseDataApi';
+import { listByUser, users } from '../../services/firebaseDataApi';
 
 export function addList(list) {
   return (dispatch, getState) => {

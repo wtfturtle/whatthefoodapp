@@ -11,7 +11,7 @@ export function saveResults(results) {
 
 export function addVenue(listId, venueId, name) {
   return (dispatch) => {
-    lists.child(listId).child(venueId).set(true); 
+    lists.child(listId).child(venueId).set(true); // this line is the problem
     places.child(venueId).child('name').set(name);
     dispatch({
       type: VENUE_ADD,

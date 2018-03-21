@@ -8,7 +8,7 @@ class Result extends Component {
 
   state = {
     clicked: false
-  }
+  };
 
   handleClick = event => {
     event.preventDefault();
@@ -18,6 +18,10 @@ class Result extends Component {
   handleUnclick = event => {
     event.preventDefault();
     this.setState({ clicked: false });
+  };
+
+  handleAdd = (listId, venueId, name) => {
+    this.props.addVenue(listId, venueId, name);
   };
 
   render() {
@@ -42,9 +46,9 @@ class Result extends Component {
             <div>
               <button onClick={this.handleUnclick}>X</button>
               <ul>
-                {lists.map(list => (
-                  <li key={list.key}>
-                    <button onClick={addVenue(list.key, id, name)}>{list.name}</button>
+                {lists.map((list, index) => (
+                  <li key={index}>
+                    <button onSubmit={this.handleAdd(list.key, id, name)}>{list.name}</button>
                   </li>
                 ))}
               </ul>

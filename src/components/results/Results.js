@@ -7,7 +7,9 @@ import Result from './Result';
 class Results extends Component {
 
   componentDidMount() {
-    this.props.loadList();
+    if(this.props.user) {
+      this.props.loadList();
+    }
   }
 
   render() {

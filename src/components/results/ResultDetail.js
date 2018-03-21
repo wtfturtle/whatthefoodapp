@@ -42,9 +42,11 @@ class ResultDetail extends Component {
         {user &&
           <button onClick={addVenue(this.id)}>Save</button>} 
 
-        <div>
-          <Rating/>
-        </div>  
+        {user && 
+          <div>
+            <Rating/>
+          </div>  
+        }
       </div>
     );
   }

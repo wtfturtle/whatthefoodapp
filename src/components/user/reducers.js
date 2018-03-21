@@ -30,6 +30,7 @@ export function listLoad(state = [], { type, payload }) {
 export function venueLoad(state = {}, { type, payload }) {
   switch(type) {
     case VENUE_ADD:
+    case VENUE_REMOVE:
     case VENUE_LOAD:
       return {
         ...state,

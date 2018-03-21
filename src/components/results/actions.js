@@ -27,9 +27,12 @@ export function addVenue(listId, venueId, name) {
   };
 }
 
-export function removeVenue(id) {
-  return {
-    type: VENUE_REMOVE,
-    payload: id
+export function removeVenue(listId, venueId) {
+  return (dispatch) => {
+    lists.child(listId).child(venueId).remove();
+    dispatch({
+      type: VENUE_REMOVE,
+      payload: venueId
+    });
   };
 }

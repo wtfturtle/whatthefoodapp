@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './result.css';
-import { addVenue } from './actions';
+import { addVenue, removeVenue } from './actions';
 
 class Result extends Component {
 
@@ -25,6 +25,10 @@ class Result extends Component {
     this.setState({ clicked: false });
   };
 
+  handleRemove = (venueId, listId) => {
+    this.props.removeVenue(venueId, listId);
+  };
+
   render() {
 
     const path = this.props.venue.photos.groups[0].items[0] || null;
@@ -44,7 +48,7 @@ class Result extends Component {
         <p>{address}</p>
         {user && 
           (venueLoad[id] ?
-            <button>Remove</button> 
+            <button onClick={() => this.handleRemove(Object.keys(venueLoad[id])[0], id)}>Remove</button> 
             : (clicked ? 
               <div>
                 <button onClick={this.handleUnclick}>X</button>
@@ -71,5 +75,5 @@ export default connect(
     lists: state.listLoad,
     venueLoad: state.venueLoad
   }),
-  { addVenue }
+  { addVenue, removeVenue }
 )(Result);

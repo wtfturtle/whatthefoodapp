@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './result.css';
-import { addVenue, removeVenue } from './actions';
+import { removeVenue } from './actions';
+import Add from '../buttons/Add';
+import Remove from '../buttons/Remove';
 
 class Result extends Component {
 
@@ -20,15 +22,6 @@ class Result extends Component {
     this.setState({ clicked: false });
   };
 
-  handleAdd = (listId, venueId, name) => {
-    this.props.addVenue(listId, venueId, name);
-    this.setState({ clicked: false });
-  };
-
-  handleRemove = (venueId, listId) => {
-    this.props.removeVenue(venueId, listId);
-  };
-
   render() {
 
     const path = this.props.venue.photos.groups[0].items[0] || null;
@@ -37,7 +30,7 @@ class Result extends Component {
     const { address } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
     const { id } = this.props.venue;
-    const { user, lists, venueLoad } = this.props;
+    const { user, venueLoad } = this.props;
     const { clicked } = this.state;
 
     return (
@@ -47,19 +40,10 @@ class Result extends Component {
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 
-          (venueLoad[id] ?
-            <button onClick={() => this.handleRemove(Object.keys(venueLoad[id])[0], id)}>Remove</button> 
+          (venueLoad[id] ? // check if venue exists for user already. If so, give remove option:
+            <Remove venue={this.props.venue}/> 
             : (clicked ? 
-              <div>
-                <button onClick={this.handleUnclick}>X</button>
-                <ul>
-                  {lists.map((list, index) => (
-                    <li key={index}>
-                      <button onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Add venue={this.props.venue}/>
               : <button onClick={this.handleClick}>Save</button>
             )        
           )
@@ -75,5 +59,5 @@ export default connect(
     lists: state.listLoad,
     venueLoad: state.venueLoad
   }),
-  { addVenue, removeVenue }
+  { removeVenue }
 )(Result);

@@ -1,15 +1,10 @@
 import { ADD_LIST, LOAD_LIST } from './reducers';
-
-import { users, listByUser, lists } from '../../services/firebaseDataApi';
-
-
+import { listByUser } from '../../services/firebaseDataApi';
 
 export function addList(list) {
   return (dispatch, getState) => {
     let { uid } = getState().user;
-    console.log(uid);
     listByUser.child(uid).push(list);
-    lists.child(uid).push(list);
     dispatch({
       type: ADD_LIST,
       payload: list

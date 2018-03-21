@@ -7,7 +7,7 @@ class ResultDetail extends Component {
 
   render() {
 
-    const { id } = this.props.match.params; //will also need for saving restaurant
+    const { id } = this.props.match.params; 
     const { results } = this.props;
 
     const result = results.find(element => {
@@ -40,7 +40,6 @@ class ResultDetail extends Component {
         <p>{phone}</p>
         {user &&
           <button onClick={addVenue(this.id)}>Save</button>} 
-        {/* button function needs attention */}
       </div>
     );
   }

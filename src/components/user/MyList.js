@@ -6,27 +6,12 @@ import { loadList } from './actions';
 class MyList extends Component {
 
   componentDidMount() {
-
-    // if(this.props.user !== this.props.user.uid)
-    // if(nextProps.user.uid !== this.props.user.uid)
     this.props.loadList();
-      // console.log(nextProps.user.uid);
-
   }
-  // componentWillReceiveProps(nextProps) {
-
-  //   // if(this.props.user !== this.props.user.uid)
-  //   if(nextProps.user.uid !== this.props.user.uid)
-  //     this.props.loadList();
-  //     // console.log(nextProps.user.uid);
-
-  // }
 
   render() {
-    // const { user } = this.props;
-    const { user, listResults } = this.props;
-    // if(!listResults || !user) return null;
-    console.log(listResults);
+
+    const { listResults } = this.props;
 
     return (
       <div>

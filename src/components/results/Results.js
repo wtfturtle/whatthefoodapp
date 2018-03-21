@@ -1,19 +1,24 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import './result.css';
+import { loadList } from '../user/actions';
 import Result from './Result';
 
 class Results extends Component {
 
-  render() {
+  componentDidMount() {
+    this.props.loadList();
+  }
 
-    const { results } = this.props;
+  render() {
+    
+    const { results, user } = this.props;
 
     return (
       <Fragment>
         {results ? 
           <ul className="result-ul">
-            {results.map((result, index) => <Result key={index} {...result}/>)}
+            {results.map((result, index) => <Result key={index} {...result} user={user}/>)}
           </ul>
           : null
         }
@@ -23,6 +28,9 @@ class Results extends Component {
 }
 
 export default connect(
-  ({ results }) => ({ results }),
-  null
+  state => ({ 
+    results: state.results, 
+    user: state.user,
+    listResults: state.listLoad }),
+  ({ loadList })
 )(Results);

@@ -10,7 +10,7 @@ import Home from '../home/Home';
 // import CreateLogin from './login/CreateLogin';
 import { Signin, Signup } from './auth/LoginForm';
 import User from '../user/User';
-import RestaurantDetail from '../results/RestaurantDetail';
+import ResultDetail from '../results/ResultDetail';
 import { listenForUser } from './auth/actions';
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
                 <Route path="/auth/signin" component={Signin}/>
                 <Route path="/auth/signup" component={Signup}/>
                 <Route path="/user" component={User}/>
-                <Route path="/results/:id" component={RestaurantDetail}/>
+                <Route path="/results/:id" component={ResultDetail}/>
                 <Redirect to="/"/>
               </Switch>
             </main>

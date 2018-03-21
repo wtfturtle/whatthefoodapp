@@ -5,10 +5,6 @@ import { loadList } from './actions';
 
 class MyList extends Component {
 
-  componentDidMount() {
-    this.props.loadList();
-  }
-
   render() {
 
     const { listResults } = this.props;

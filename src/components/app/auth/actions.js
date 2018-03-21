@@ -1,5 +1,6 @@
 import { onUserStateChanged, onSignUp, onSignIn, onSignOut } from '../../../services/authApi';
-import { USER } from './reducers';
+import { USER } from './reducers'
+import { loadList } from '../../user/actions';
 
 export function listenForUser() {
   return dispatch => {
@@ -8,6 +9,7 @@ export function listenForUser() {
         type: USER,
         payload: user
       });
+      dispatch(loadList());
     });
   };
 }

@@ -6,12 +6,6 @@ import Result from './Result';
 
 class Results extends Component {
 
-  componentDidMount() {
-    if(this.props.user) {
-      this.props.loadList();
-    }
-  }
-
   render() {
     
     const { results, user } = this.props;

@@ -23,12 +23,13 @@ class Result extends Component {
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 
-         <button onClick={this.props.addVenue(this.id)}>Save</button>} 
+         <button>Save</button>} 
       </li>
     );
   }
 }
 
+// onClick={this.props.addVenue(this.id)}
 export default connect(
   state => ({ user: state.user }),
   { addVenue }

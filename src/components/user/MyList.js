@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './mylist.css';
-import { loadList, createDefaultList } from './actions';
+import { loadList } from './actions';
 
 class MyList extends Component {
 
-  // componentDidMount() {
-  //   if(list !== null) {
-  //     createDefaultList()
-  //   }
-  // }
 
   render() {
 
-    const { listResults } = this.props;
+    const { id, listResults } = this.props;
 
     return (
       <div>
         {listResults ?
           <ul>
             {listResults.map(result => (
-              <li key={result.key}>{result.name}</li>
+              <li key={result.key}><Link to={`/lists/${id}`}>{result.name}</Link></li>
             ))}
           </ul>
           :

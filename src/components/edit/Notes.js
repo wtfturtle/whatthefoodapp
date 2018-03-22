@@ -16,9 +16,15 @@ class Notes extends Component {
         <section>
           <NoteForm id={id}/>
         </section>
-        <ul>
-          {noteResults.map(note => <Note key={note.id} {...note}/>)}
-        </ul>
+        
+        {noteResults 
+          ?
+          <ul>
+            {noteResults.map(note => <Note key={note.id} {...note}/>)}
+          </ul>
+          :
+          <p></p>
+        }
       </div>
     );
   }

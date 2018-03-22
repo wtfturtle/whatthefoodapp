@@ -6,6 +6,7 @@ import { addVenue, removeVenue, editVenue } from './actions';
 import Rating from '../edit/Rating';
 import Notes from '../edit/Notes';
 
+
 class ResultDetail extends Component {
 
   render() {
@@ -48,6 +49,7 @@ class ResultDetail extends Component {
 
         {user && 
           <div>
+            {/* <Thumbs/> */}
             <Rating/>
             <Notes id={id}/>
           </div>  

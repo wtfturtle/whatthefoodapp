@@ -16,11 +16,11 @@ export function addNote(note, venueId) {
 export function loadNote() {
   return (dispatch, getState) => {
 
-    const { uid, venueId } = getState().user;
+    const { uid } = getState().user;
 
     return dispatch ({
       type: NOTE_LOAD,
-      payload: notesByUser.child(uid).child(venueId).once('value')
+      payload: notesByUser.child(uid).once('value')
         .then(data => {
           const noteResults = data.val();
 

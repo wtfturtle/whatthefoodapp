@@ -68,7 +68,7 @@
 
 .main-container {
   text-align: left;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 }
 
 .footer {
@@ -175,7 +175,7 @@
     right: 1rem;
     opacity: 0;
     cursor: pointer;
-    width: 25px;
+    width: 10px;
   }
   
   input:checked ~ #burger span {

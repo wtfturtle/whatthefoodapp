@@ -4,10 +4,12 @@
   grid-gap: 3rem;
   grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
   list-style: none;
+  padding: 0;
 }
 
 .img-wrap {
-  width: 300px;
-  height: 300px;
+  max-width: 370px;
+  max-height: 250px;
   overflow: hidden;
 }
+

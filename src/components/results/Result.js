@@ -23,7 +23,7 @@ class Result extends Component {
         <div className="img-wrap">
           <img src={imageUrl} alt="restaurant"></img>
         </div>
-        <h3><Link to={`/results/${id}`}>{name}</Link></h3> 
+        <h4><Link to={`/results/${id}`}>{name}</Link></h4> 
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 

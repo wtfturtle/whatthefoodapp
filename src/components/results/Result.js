@@ -20,8 +20,10 @@ class Result extends Component {
 
     return (
       <li className="result-li">
-        <h2><Link to={`/results/${id}`}>{name}</Link></h2> 
-        <img src={imageUrl} alt="restaurant"></img>
+        <div className="img-wrap">
+          <img src={imageUrl} alt="restaurant"></img>
+        </div>
+        <h3><Link to={`/results/${id}`}>{name}</Link></h3> 
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 

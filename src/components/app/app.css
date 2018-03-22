@@ -84,6 +84,9 @@
 /* ----- Media Queries ----- */
 
 @media (min-width: 200px) {
+  .mobile-logo{
+    display: none;
+  }
   .logo {
     font-size: 1.3rem;
     padding: 7px 0 0;
@@ -110,6 +113,10 @@
 }
 
 @media (min-width: 550px) {
+
+  .mobile-logo {
+    display: none;
+  }
   #header {
     padding: 2rem;
   }
@@ -140,7 +147,29 @@
 /* ----- Burger Media Query ----- */
 
 @media (max-width: 550px) {
+  .mobile-logo {
+    display: contents;
+    font-size: 30px;
+  }
+  .nav-ul{
+    font-size: 30px;
+    flex-direction: column;
+    text-align: right;
+    padding-top: 1rem;
+    padding-right: 2.5rem;
+  }
+  
+  .flex-li {
+    flex-direction: column;
+    font-size: 30px;
+    text-align: right;
+    padding: 1rem 0;
 
+  .flex-li-child {
+      padding: 1rem 0;
+    }
+    
+  }
   #main-menu {
     position: absolute;
     transform: translate(0, -100%);
@@ -152,6 +181,8 @@
     width: 100%;
     height: 100vh;
     background-color: white;
+    padding-top: 1.3rem;
+    padding-left: 1rem;
   }
 
   #burger span {

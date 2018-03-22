@@ -1,5 +1,6 @@
 import { RESULTS_SAVE, VENUE_ADD, VENUE_REMOVE } from './reducers';
 import { lists, places } from '../../services/firebaseDataApi';
+import { loadVenues } from '../user/actions';
 
 
 export function saveResults(results) {
@@ -13,9 +14,11 @@ export function saveResults(results) {
 export function addVenue(listId, venueId, name) {
   return (dispatch) => {
     lists.child(listId).child(venueId).set(true); 
-    if(!places.child(venueId)) {
-      places.child(venueId).child('name').set(name);
-    }
+ 
+
+    // if(!places.child(venueId)) {
+    //   places.child(venueId).child('name').set(name);
+    // }
     dispatch({
       type: VENUE_ADD,
       payload: {

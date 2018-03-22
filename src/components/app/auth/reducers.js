@@ -1,5 +1,6 @@
 export const USER = 'USER';
 
+
 export function user(state = null, { type, payload }) {
   switch(type) {
     

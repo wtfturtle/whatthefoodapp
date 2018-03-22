@@ -5,6 +5,7 @@ export const VENUE_LOAD = 'VENUE_LOAD';
 
 export function add(state = [], { type, payload }) {
   switch(type) {
+    
     case ADD_LIST:
       return [
         ...state,
@@ -18,6 +19,7 @@ export function add(state = [], { type, payload }) {
 
 export function listLoad(state = [], { type, payload }) {
   switch(type) {
+
     case LOAD_LIST:
       return [
         ...payload
@@ -31,6 +33,10 @@ export function venueLoad(state = {}, { type, payload }) {
   switch(type) {
     case VENUE_ADD:
     case VENUE_REMOVE:
+      delete state.payload;
+      return {
+        ...state
+      };
     case VENUE_LOAD:
       return {
         ...state,

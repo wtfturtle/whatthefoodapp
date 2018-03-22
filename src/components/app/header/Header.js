@@ -7,8 +7,38 @@ import { logout } from '../auth/actions';
 
 class Header extends Component {
 
+  state = {
+    menu: false
+  };
+
+  handleClick = () => {
+    this.setState(prev => {
+      return { menu: !prev.menu };
+    });
+    
+  };
+
+  handleLogout = () => {
+    this.props.logout(), 
+    this.setState(prev => {
+      return { menu: !prev.menu };
+    });
+  };
+
   render() { 
-    const { error, logout, user } = this.props;
+    const { error, user } = this.props;
+    const { menu } = this.state;
+
+    // this.nav = dom.querySelector('nav#main-menu');
+    // const checkbox = dom.querySelector('input');
+    // this.nav.addEventListener('click', () => {
+    //   checkbox.click(
+    //     checkbox.addEventListener('change', event => {
+    //       event.preventDefault();
+    //     })
+    //   );
+    // });
+
 
     return (
       <header role="banner" id="header">
@@ -17,20 +47,21 @@ class Header extends Component {
           
           <div>
             <label htmlFor="check" name="checkbox"></label>
-            <input id="check" className="checkbox" type="checkbox"/>
+            <input id="check" className="checkbox" type="checkbox" onClick={this.handleClick} checked={menu}/>
 
             <div id="burger"><span></span><span></span><span></span></div>
             <nav id="main-menu">
+              <h1 className="mobile-logo">What The Food</h1>
               <ul className="nav-ul">
-                <li><Link to="/">Home</Link></li>
+                <li><Link to="/" onClick={this.handleClick}>Home</Link></li>
                 {user 
                   ? <div className="flex-li">
-                    <li><Link to="/user">{user && <span>Hello, {user.name}</span>}</Link></li>
-                    <li><Link to="/" onClick={logout}>Log Out</Link></li>
+                    <li><Link to="/user" onClick={this.handleClick}>{user && <span>Hello, {user.name}</span>}</Link></li>
+                    <li><Link to="/" onClick={this.handleLogout}>Log Out</Link></li>
                   </div>
                   : <div className="flex-li">
-                    <li><Link to="/auth/signin">Log In</Link></li>
-                    <li><Link to="/auth/signup">Sign Up</Link></li>
+                    <li className="flex-li-child"><Link to="/auth/signin" onClick={this.handleClick}>Log In</Link></li>
+                    <li className="flex-li-child"><Link to="/auth/signup" onClick={this.handleClick}>Sign Up</Link></li>
                   </div>
                 }
               </ul>

@@ -62,6 +62,10 @@
   }
 }
 
+.boddy-padding {
+  padding: 0 1rem;
+}
+
 .flex-li {
   display: flex;
 }
@@ -175,7 +179,7 @@
     right: 1rem;
     opacity: 0;
     cursor: pointer;
-    width: 25px;
+    width: 10px;
   }
   
   input:checked ~ #burger span {

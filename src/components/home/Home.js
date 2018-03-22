@@ -11,10 +11,11 @@ class Home extends Component {
 
     return (
       <section className="main-container maxwidth-wrap">
-        Home
-        <Search/>
-        <Random/>
-        <Results/>
+        <div className="body-padding">
+          <Search/>
+          <Random/>
+          <Results/>
+        </div>
       </section>
     );
   }

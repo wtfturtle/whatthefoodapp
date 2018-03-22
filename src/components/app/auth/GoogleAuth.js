@@ -9,16 +9,16 @@ class GoogleAuth extends PureComponent {
 
   componentDidMount() {
     const { origin } = window.location;
-    // const { location } = this.props;
-    const { from } = { from: { pathname: '/dashboard' } };
-    const { pathname: redirect } = from;
+    const { history } = this.props;
+    // const { from } = { from: { pathname: '/' } };
+    // const { pathname: redirect } = from;
 
     ui.start('#firebaseui-auth-container', {
-      signInSuccessUrl: `${origin}${redirect}`,
+      signInSuccessUrl: `${origin}/home`,
       callbacks: { 
         signInSuccess: function(currentUser, credential, redirectUrl) {
           console.log(redirectUrl);
-          setTimeout(() =>  history.push('/dashboard'), 100);
+          setTimeout(() =>  history.push('/'), 100);
           return false;
         }
       },

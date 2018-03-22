@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './result.css';
 import { addVenue, removeVenue, editVenue } from './actions';
 import Rating from '../edit/Rating';
 import Notes from '../edit/Notes';
+
 
 class ResultDetail extends Component {
 
@@ -33,18 +35,21 @@ class ResultDetail extends Component {
 
     return (
       <div>
-        <h1>{name}</h1> 
+        <Link to="/">⬅ Back</Link>
+
         <img src={imageUrl} alt="restaurant"></img>
+        <h3>{name}</h3> 
         <p>Price: {message}</p> 
-        <small>{url}</small>
+        <p><Link to={url} alt={name}>{url}</Link></p>
+        <p>{phone}</p>
         <p>{address}</p>
         <p>{city}</p>
-        <p>{phone}</p>
         {user &&
           <button onClick={addVenue(this.id)}>Save</button>} 
 
         {user && 
           <div>
+            {/* <Thumbs/> */}
             <Rating/>
             <Notes id={id}/>
           </div>  

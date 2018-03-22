@@ -7,7 +7,7 @@ import { searchTerm } from '../components/search/reducers';
 import { listLoad, venueLoad } from '../components/user/reducers';
 import { results, userVenues } from '../components/results/reducers';
 import { randomSearch } from '../components/random/reducers';
-
+import { notes } from '../components/edit/reducers';
 
 const reducer = combineReducers({
   loading,
@@ -18,7 +18,8 @@ const reducer = combineReducers({
   listLoad,
   venueLoad,
   userVenues,
-  randomSearch
+  randomSearch,
+  notes
 });
 
 // extension

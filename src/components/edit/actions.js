@@ -1,4 +1,4 @@
-import { NOTE_ADD } from './reducers';
+import { NOTE_ADD, NOTE_LOAD } from './reducers';
 import { notesByUser } from '../../services/firebaseDataApi';
 
 export function addNote(note, venueId) {
@@ -9,6 +9,27 @@ export function addNote(note, venueId) {
     dispatch({
       type: NOTE_ADD,
       payload: note, venueId
+    });
+  };
+}
+
+export function loadNote() {
+  return (dispatch, getState) => {
+
+    const { uid } = getState().user;
+
+    return dispatch ({
+      type: NOTE_LOAD,
+      payload: notesByUser.child(uid).once('value')
+        .then(data => {
+          const noteResults = data.val();
+
+          const results = Object.keys(noteResults).map(key => {
+            const note = results[key];
+            return { key, note };
+          });
+          return results;
+        })
     });
   };
 }

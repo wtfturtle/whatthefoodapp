@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MyList from './MyList';
 import { connect } from 'react-redux';
-import { addList } from './actions';
+import { addList, loadList } from './actions';
 
 class User extends Component {
 
@@ -16,7 +16,7 @@ class User extends Component {
     this.setState({
       list: ''
     });
-    console.log(list);
+    this.props.loadList();
   };
 
   handleChange = ({ target }) => {
@@ -50,5 +50,5 @@ class User extends Component {
 
 export default connect(
   state => ({ user: state.user }),
-  { addList }
+  { addList, loadList }
 )(User);

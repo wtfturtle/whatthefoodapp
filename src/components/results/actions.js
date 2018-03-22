@@ -1,6 +1,6 @@
-import { RESULTS_SAVE, VENUE_ADD, VENUE_REMOVE } from './reducers';
-import { lists, places } from '../../services/firebaseDataApi';
-
+import { RESULTS_SAVE } from './reducers';
+import { VENUE_ADD, VENUE_REMOVE } from '../user/reducers';
+import { lists } from '../../services/firebaseDataApi';
 
 export function saveResults(results) {
   return {
@@ -9,19 +9,15 @@ export function saveResults(results) {
   };
 }
 
-//need to check if venue is already in places
-export function addVenue(listId, venueId, name) {
+export function addVenue(listKey, venueKey) {
   return (dispatch) => {
-    lists.child(listId).child(venueId).set(true); 
-    if(!places.child(venueId)) {
-      places.child(venueId).child('name').set(name);
-    }
+    lists.child(listKey).child(venueKey).set(true); 
+ 
     dispatch({
       type: VENUE_ADD,
       payload: {
-        venueId,
-        name,
-        listId
+        venueKey,
+        listKey
       }
     });
   };

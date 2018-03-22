@@ -5,7 +5,7 @@ import { loading, error } from '../components/app/errorloading/reducers';
 import { user } from '../components/app/auth/reducers';
 import { searchTerm } from '../components/search/reducers';
 import { listLoad, venueLoad } from '../components/user/reducers';
-import { results, userVenues } from '../components/results/reducers';
+import { results } from '../components/results/reducers';
 import { randomSearch } from '../components/random/reducers';
 import { notes } from '../components/edit/reducers';
 
@@ -17,7 +17,6 @@ const reducer = combineReducers({
   results,
   listLoad,
   venueLoad,
-  userVenues,
   randomSearch,
   notes
 });

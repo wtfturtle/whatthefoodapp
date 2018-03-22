@@ -1,4 +1,5 @@
-import { results, userVenues, VENUE_ADD, VENUE_REMOVE } from './reducers';
+import { results } from './reducers';
+import { VENUE_ADD, VENUE_REMOVE } from '../user/reducers';
 
 describe('Results reducer tests:', () => {
 
@@ -7,7 +8,7 @@ describe('Results reducer tests:', () => {
     id: 111,
     price: 'moderate',
     location: 'Portland'
-  }
+  };
 
   it('defaults to an empty array for query', () => {
     const state = results(undefined, {});

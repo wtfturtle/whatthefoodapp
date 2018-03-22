@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { retrieve } from '../../services/foursquareApi';
 import Result from '../results/Result';
-// import './result.css';
 import { loadSaveList } from '../user/actions';
 
 class MyResults extends Component {
@@ -34,7 +33,7 @@ class MyResults extends Component {
           <ul className="result-ul">
             {venues.map((venue, index) => <Result key={index} {...venue}/>)}
           </ul>
-          : <p>No Save Results Yet</p>
+          : <p>No Saved Restaurants Yet</p>
         } 
       </Fragment>
     );

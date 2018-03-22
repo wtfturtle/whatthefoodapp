@@ -6,6 +6,7 @@ import Result from './Result';
 
 class Results extends Component {
 
+
   render() {
     
     const { results, searchTerm } = this.props;
@@ -24,13 +25,6 @@ class Results extends Component {
           )
         }
 
-        {/* {venueLoad ? 
-          <ul className="result-ul">
-            {venueLoad.map((result, index) => <Result key={index} {...result}/>)}
-          </ul>
-          : null
-        } */}
-
       </Fragment>
     );
   }
@@ -42,9 +36,7 @@ export default connect(
     loading: state.loading,
     searchTerm: state.searchTerm,
     results: state.results, 
-    listResults: state.listLoad,
-    // key: props.match.params.id
-    // venueLoad: state.venueLoad 
+    listResults: state.listLoad
   }),
   ({ loadList })
 )(Results);

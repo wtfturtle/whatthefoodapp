@@ -69,32 +69,18 @@ export function loadVenues() {
   };
 }
 
-export function loadSaveList() {
-  return (dispatch, getState) => {
-    
-    const { venueLoad } = getState();
-    
-    //get list key
-    //read venue id off list
-    venueLoad.child(({ key }) => {
-      lists.child(key).once('value')
-        .then(data => {
-          const val = data.val();
-          return val ? 
-            Object.keys(val) : [];
-        }
-        )
-        .then(venueKeys => {
-          venueKeys.forEach(venueKey => {
-            dispatch ({
-              type: SAVE_LOAD,
-              payload: {
-                listKey: key,
-                venueKey
-              } 
-            });
-          });
-        });
+export function loadSaveList(listKey) {
+  return dispatch => {
+    return dispatch ({
+      type: SAVE_LOAD,
+      payload: 
+        lists.child(listKey).once('value')
+          .then(data => {
+            const saveResults = data.val();
+            if(!saveResults) return [];
+            return Object.keys(saveResults); 
+          } 
+          )
     });
   };
 }

@@ -33,6 +33,7 @@ class App extends Component {
                 <Route path="/auth/signin" component={Signin}/>
                 <Route path="/auth/signup" component={Signup}/>
                 <Route path="/user" component={User}/>
+                <Route path="/user/lists/:id" component={ResultDetail}/>
                 <Route path="/results/:id" component={ResultDetail}/>
                 <Redirect to="/"/>
               </Switch>

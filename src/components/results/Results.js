@@ -23,16 +23,28 @@ class Results extends Component {
             : <h2>Sorry, No Results for {searchTerm} </h2>
           )
         }
+
+        {/* {venueLoad ? 
+          <ul className="result-ul">
+            {venueLoad.map((result, index) => <Result key={index} {...result}/>)}
+          </ul>
+          : null
+        } */}
+
       </Fragment>
     );
   }
 }
 
 export default connect(
+
   state => ({ 
     loading: state.loading,
     searchTerm: state.searchTerm,
     results: state.results, 
-    listResults: state.listLoad }),
+    listResults: state.listLoad,
+    // key: props.match.params.id
+    // venueLoad: state.venueLoad 
+  }),
   ({ loadList })
 )(Results);

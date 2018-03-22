@@ -1,4 +1,4 @@
-import { ADD_LIST, LOAD_LIST, VENUE_LOAD } from './reducers';
+import { ADD_LIST, LOAD_LIST, VENUE_LOAD, SAVE_LOAD } from './reducers';
 import { listByUser, users, lists } from '../../services/firebaseDataApi';
 
 export function addList(list) {
@@ -58,6 +58,36 @@ export function loadVenues() {
           venueKeys.forEach(venueKey => {
             dispatch ({
               type: VENUE_LOAD,
+              payload: {
+                listKey: key,
+                venueKey
+              } 
+            });
+          });
+        });
+    });
+  };
+}
+
+export function loadSaveList() {
+  return (dispatch, getState) => {
+    
+    const { venueLoad } = getState();
+    
+    //get list key
+    //read venue id off list
+    venueLoad.child(({ key }) => {
+      lists.child(key).once('value')
+        .then(data => {
+          const val = data.val();
+          return val ? 
+            Object.keys(val) : [];
+        }
+        )
+        .then(venueKeys => {
+          venueKeys.forEach(venueKey => {
+            dispatch ({
+              type: SAVE_LOAD,
               payload: {
                 listKey: key,
                 venueKey

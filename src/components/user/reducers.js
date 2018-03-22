@@ -1,6 +1,7 @@
 export const ADD_LIST = 'ADD_LIST';
 export const LOAD_LIST = 'LOAD_LIST';
 export const VENUE_LOAD = 'VENUE_LOAD';
+export const SAVE_LOAD = 'SAVE_LOAD';
 export const VENUE_ADD = 'VENUE_ADD';
 export const VENUE_REMOVE = 'VENUE_REMOVE';
 
@@ -38,6 +39,24 @@ export function venueLoad(state = {}, { type, payload }) {
         ...state
       };
     case VENUE_ADD:
+    case VENUE_LOAD:
+      return {
+        ...state,
+        [payload.venueKey]: {
+          ...state[payload.venueKey],
+          [payload.listKey]: true
+        }
+      };
+    default:
+      return state;
+  }
+}
+
+export function saveLoad(state = {}, { type, payload }) {
+  switch(type) {
+    case SAVE_LOAD:
+    case VENUE_ADD:
+    case VENUE_REMOVE:
     case VENUE_LOAD:
       return {
         ...state,

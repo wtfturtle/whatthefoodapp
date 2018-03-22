@@ -2,27 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './result.css';
-import { addVenue } from './actions';
+import { removeVenue } from './actions';
+import Add from '../buttons/Add';
+import Remove from '../buttons/Remove';
 
 class Result extends Component {
-
-  state = {
-    clicked: false
-  };
-
-  handleClick = event => {
-    event.preventDefault();
-    this.setState({ clicked: true });
-  };
-
-  handleUnclick = event => {
-    event.preventDefault();
-    this.setState({ clicked: false });
-  };
-
-  handleAdd = (listId, venueId, name) => {
-    this.props.addVenue(listId, venueId, name);
-  };
 
   render() {
 
@@ -32,8 +16,7 @@ class Result extends Component {
     const { address } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
     const { id } = this.props.venue;
-    const { user, lists } = this.props;
-    const { clicked } = this.state;
+    const { user, venueLoad } = this.props;
 
     return (
       <li className="result-li">
@@ -42,19 +25,11 @@ class Result extends Component {
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 
-          (clicked ? 
-            <div>
-              <button onClick={this.handleUnclick}>X</button>
-              <ul>
-                {lists.map((list, index) => (
-                  <li key={index}>
-                    <button onSubmit={this.handleAdd(list.key, id, name)}>{list.name}</button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            : <button onClick={this.handleClick}>Save</button>
-          )
+          (venueLoad[id] ? // check if venue exists for user already. If so, give remove option:
+            <Remove venue={this.props.venue}/> 
+            :  
+            <Add venue={this.props.venue}/>
+          )        
         } 
       </li>
     );
@@ -64,7 +39,8 @@ class Result extends Component {
 export default connect(
   state => ({ 
     user: state.user,
-    lists: state.listLoad
+    lists: state.listLoad,
+    venueLoad: state.venueLoad
   }),
-  { addVenue }
+  { removeVenue }
 )(Result);

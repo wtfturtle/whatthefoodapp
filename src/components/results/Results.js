@@ -8,7 +8,7 @@ class Results extends Component {
 
   render() {
     
-    const { results, user } = this.props;
+    const { results } = this.props;
 
     return (
       <Fragment>
@@ -26,7 +26,6 @@ class Results extends Component {
 export default connect(
   state => ({ 
     results: state.results, 
-    user: state.user,
     listResults: state.listLoad }),
   ({ loadList })
 )(Results);

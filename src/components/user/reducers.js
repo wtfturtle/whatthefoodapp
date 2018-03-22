@@ -1,5 +1,7 @@
+import { VENUE_ADD, VENUE_REMOVE } from '../results/reducers';
 export const ADD_LIST = 'ADD_LIST';
 export const LOAD_LIST = 'LOAD_LIST';
+export const VENUE_LOAD = 'VENUE_LOAD';
 
 export function add(state = [], { type, payload }) {
   switch(type) {
@@ -20,6 +22,23 @@ export function listLoad(state = [], { type, payload }) {
       return [
         ...payload
       ];
+    default:
+      return state;
+  }
+}
+
+export function venueLoad(state = {}, { type, payload }) {
+  switch(type) {
+    case VENUE_ADD:
+    case VENUE_REMOVE:
+    case VENUE_LOAD:
+      return {
+        ...state,
+        [payload.venueKey]: {
+          ...state[payload.venueKey],
+          [payload.listKey]: true
+        }
+      };
     default:
       return state;
   }

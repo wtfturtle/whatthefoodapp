@@ -20,7 +20,7 @@ class Notes extends Component {
         {noteResults 
           ?
           <ul>
-            {noteResults.map(note => <Note key={note.id} {...note}/>)}
+            {noteResults.map((note, index) => <Note key={index} text={note}/>)}
           </ul>
           :
           <p></p>

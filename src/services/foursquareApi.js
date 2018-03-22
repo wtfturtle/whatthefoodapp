@@ -6,6 +6,7 @@ const location = 'Portland,OR';
 
 const BASE_URL = `https://api.foursquare.com/v2/venues/explore/?near=${location}`;
 const END_URL = `&venuePhotos=1&client_id=${clientID}&client_secret=${clientSecret}${version}`;
+const END_URL2 = `?client_id=${clientID}&client_secret=${clientSecret}${version}`;
 
 export const checkResponseData = data => {
   if(data.Response === 'True') return data;
@@ -22,8 +23,8 @@ export function search({ query }) {
 }
 
 export function retrieve(venueId) {
-  const url = `https://api.foursquare.com/v2/venues/${venueId}${END_URL}`;
-  
+  const url = `https://api.foursquare.com/v2/venues/${venueId}${END_URL2}`;
+  console.dir(url);
   return fetch(url).then(result => {
     if(result.ok) return result.json();
     return result.json().then(json => { throw json; });

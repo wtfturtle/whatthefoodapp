@@ -13,19 +13,19 @@ export function addNote(note, venueId) {
   };
 }
 
-export function loadNote() {
+export function loadNote(id) {
   return (dispatch, getState) => {
 
     const { uid } = getState().user;
 
     return dispatch ({
       type: NOTE_LOAD,
-      payload: notesByUser.child(uid).once('value')
+      payload: notesByUser.child(uid).child(id).once('value')
         .then(data => {
           const noteResults = data.val();
 
           const results = Object.keys(noteResults).map(key => {
-            const note = results[key];
+            const note = noteResults[key];
             return { key, note };
           });
           return results;

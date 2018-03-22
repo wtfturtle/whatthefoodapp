@@ -5,7 +5,11 @@ import { loadNote } from './actions';
 import Note from './Note';
 
 class Notes extends Component {
-  
+
+  componentDidMount() {
+    this.props.loadNote(this.props.id);
+  }
+
   render() {
     const { id, noteResults } = this.props;
     if(!id) return null;
@@ -20,7 +24,7 @@ class Notes extends Component {
         {noteResults 
           ?
           <ul>
-            {noteResults.map((note, index) => <Note key={index} text={note}/>)}
+            {noteResults.map((note, index) => <Note id={id} key={index} note={note}/>)}
           </ul>
           :
           <p></p>

@@ -10,8 +10,10 @@ class Result extends Component {
 
   render() {
 
-    const path = this.props.venue.photos.groups[0].items[0] || null;
-    const imageUrl = `${path.prefix}original${path.suffix}` || null;
+    const path = this.props.venue.photos.groups[0] ? this.props.venue.photos.groups[0].items[0] : null;
+    
+    const imageUrl = path ? `${path.prefix}original${path.suffix}` : 'https://visitmasoncityiowa.com/wp-content/uploads/2017/03/3318_EAT-GENERIC-.jpg';
+
     const { name } = this.props.venue;
     const { address } = this.props.venue.location;
     const { message } = this.props.venue.price || 'Not Listed';
@@ -25,7 +27,7 @@ class Result extends Component {
         <p>Price: {message}</p> 
         <p>{address}</p>
         {user && 
-          (venueLoad[id] ? // check if venue exists for user already. If so, give remove option:
+          (venueLoad[id] ? 
             <Remove venue={this.props.venue}/> 
             :  
             <Add venue={this.props.venue}/>

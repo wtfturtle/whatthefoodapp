@@ -5,11 +5,14 @@ export function addNote(note, venueId) {
   return (dispatch, getState) => {
     
     let { uid } = getState().user;
-    notesByUser.child(uid).child(venueId).push(note);
-    dispatch({
-      type: NOTE_ADD,
-      payload: note, venueId
-    });
+    notesByUser.child(uid).child(venueId).push(note)
+      .then(data => {
+        const newNote = { key: data.key, note };
+        dispatch({
+          type: NOTE_ADD,
+          payload: newNote
+        });    
+      });
   };
 }
 

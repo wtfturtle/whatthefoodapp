@@ -52,18 +52,11 @@ export function venueLoad(state = {}, { type, payload }) {
   }
 }
 
-export function saveLoad(state = {}, { type, payload }) {
+export function loadSaveResults(state = {}, { type, payload }) {
   switch(type) {
     case SAVE_LOAD:
-    case VENUE_ADD:
-    case VENUE_REMOVE:
-    case VENUE_LOAD:
       return {
-        ...state,
-        [payload.venueKey]: {
-          ...state[payload.venueKey],
-          [payload.listKey]: true
-        }
+        payload
       };
     default:
       return state;

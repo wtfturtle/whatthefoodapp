@@ -31,8 +31,7 @@ class MyList extends Component {
 
 export default connect(
   state => ({ 
-    listResults: state.listLoad,
-    // venueLoad: state.venueLoad
+    listResults: state.listLoad
   }),
   { loadList }
 )(MyList);

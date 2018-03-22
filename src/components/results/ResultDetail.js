@@ -35,17 +35,23 @@ class ResultDetail extends Component {
 
     return (
       <div>
-        <Link to="/">⬅ Back</Link>
+        <div>
+          <div>
+            <Link to="/">⬅ Back</Link>
+            <img src={imageUrl} alt="restaurant"></img>
+          </div>
 
-        <img src={imageUrl} alt="restaurant"></img>
-        <h3>{name}</h3> 
-        <p>Price: {message}</p> 
-        <p><Link to={url} alt={name}>{url}</Link></p>
-        <p>{phone}</p>
-        <p>{address}</p>
-        <p>{city}</p>
-        {user &&
+          <div>
+            <h3>{name}</h3> 
+            <p>Price: {message}</p> 
+            <p><Link to={url} alt={name}>{url}</Link></p>
+            <p>{phone}</p>
+            <p>{address}</p>
+            <p>{city}</p>
+            {user &&
           <button onClick={addVenue(this.id)}>Save</button>} 
+          </div>
+        </div>
 
         {user && 
           <div>

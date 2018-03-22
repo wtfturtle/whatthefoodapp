@@ -36,13 +36,13 @@ class ResultDetail extends Component {
       <div>
         <Link to="/">⬅ Back</Link>
 
-        <h1>{name}</h1> 
         <img src={imageUrl} alt="restaurant"></img>
+        <h3>{name}</h3> 
         <p>Price: {message}</p> 
-        <small>{url}</small>
+        <p><Link to={url} alt={name}>{url}</Link></p>
+        <p>{phone}</p>
         <p>{address}</p>
         <p>{city}</p>
-        <p>{phone}</p>
         {user &&
           <button onClick={addVenue(this.id)}>Save</button>} 
 

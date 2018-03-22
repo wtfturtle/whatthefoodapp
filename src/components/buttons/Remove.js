@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { removeVenue } from '../results/actions';
+import { loadVenues } from '../user/actions';
 
 class Remove extends Component {
 
   handleRemove = (venueId, listId) => {
     this.props.removeVenue(venueId, listId);
+    this.props.loadVenues();
   };
 
   render() {
@@ -25,5 +27,5 @@ export default connect(
     lists: state.listLoad,
     venueLoad: state.venueLoad,
   }),
-  { removeVenue }
+  { removeVenue, loadVenues }
 )(Remove);

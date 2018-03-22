@@ -14,9 +14,12 @@ class Results extends Component {
       <Fragment>
         {searchTerm &&
           (results[0] ? 
-            <ul className="result-ul">
-              {results.map((result, index) => <Result key={index} {...result}/>)}
-            </ul>
+            <div>
+              <h3>Results for {searchTerm}</h3>
+              <ul className="result-ul">
+                {results.map((result, index) => <Result key={index} {...result}/>)}
+              </ul>
+            </div>
             : <h2>Sorry, No Results for {searchTerm} </h2>
           )
         }
@@ -34,7 +37,9 @@ class Results extends Component {
 }
 
 export default connect(
-  (state) => ({ 
+
+  state => ({ 
+    loading: state.loading,
     searchTerm: state.searchTerm,
     results: state.results, 
     listResults: state.listLoad,

@@ -36,7 +36,6 @@ export function loadList() {
             });
             return results;
           }
-
         })
     });
   };

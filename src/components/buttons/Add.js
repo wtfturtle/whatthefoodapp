@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addVenue } from '../results/actions';
+import { loadVenues } from '../user/actions';
 
 class Add extends Component {
 
@@ -21,6 +22,7 @@ class Add extends Component {
   handleAdd = (listId, venueId, name) => {
     this.props.addVenue(listId, venueId, name);
     this.setState({ clicked: false });
+    this.props.loadVenues();
   };
 
   render() {
@@ -53,5 +55,5 @@ export default connect(
     lists: state.listLoad,
     venueLoad: state.venueLoad,
   }),
-  { addVenue }
+  { addVenue, loadVenues }
 )(Add);

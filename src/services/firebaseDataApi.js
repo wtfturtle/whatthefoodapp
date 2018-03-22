@@ -17,3 +17,8 @@ export const places = db.ref('places');
   // name
   // address
   // phone
+
+export const notesByUser = db.ref('notesByUser');
+
+
+export const notes = db.ref('notes');

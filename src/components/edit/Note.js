@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateNote, removeNote } from './actions';
-import ItemForm from '../common/ItemForm';
-import Comments from '../comments/Comments';
+import NoteForm from './NoteForm';
 
 class Note extends Component {
 
@@ -31,7 +30,7 @@ class Note extends Component {
       <li>
         {editing ? 
           <div>
-            <ItemForm id={id} text={text} onEdit={this.handleEdit}/> 
+            {/* <NoteForm id={id} text={text} onEdit={this.handleEdit}/>  */}
             <button onClick={this.handleToggleEdit}>cancel</button>
           </div>
           :
@@ -45,7 +44,7 @@ class Note extends Component {
           </article>
         }
         <p>{count} comment(s)</p>
-        <Comments noteId={id}/>
+       
       </li>
     );
   }

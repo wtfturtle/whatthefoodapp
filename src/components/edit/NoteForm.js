@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addNote } from './actions';
 
-export default class NoteForm extends Component {
+class NoteForm extends Component {
   
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      note: '',
-      ...props
-    };
-  }
+  state = {
+    note: ''
+  };
+  
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onEdit({
-      ...this.state
-    })
-      .then(() => {
-        this.setState({ note: '' });
-      });    
+    const { id } = this.props;
+    const { note } = this.state;
+    this.props.addNote(note, id);
+    this.setState({ 
+      note: '' 
+    });
   };
 
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
+    this.setState({ note: target.value });
   };
 
   render() {
-    const { id, note } = this.state;
+    const { id } = this.props;
+    const { note } = this.state;
+    
     return (
       <form onSubmit={this.handleSubmit}>
         <input required name="note" value={note} onChange={this.handleChange}/>
@@ -35,3 +35,8 @@ export default class NoteForm extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({ user: state.user }),
+  { addNote }
+)(NoteForm);

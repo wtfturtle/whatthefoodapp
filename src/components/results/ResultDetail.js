@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './result.css';
 import { addVenue, removeVenue, editVenue } from './actions';
 import Rating from '../edit/Rating';
+import Notes from '../edit/Notes';
 
 class ResultDetail extends Component {
 
@@ -45,6 +46,7 @@ class ResultDetail extends Component {
         {user && 
           <div>
             <Rating/>
+            <Notes id={id}/>
           </div>  
         }
       </div>

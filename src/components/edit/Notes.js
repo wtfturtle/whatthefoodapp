@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNote, loadNotes } from './actions';
-import NoteForm from '../common/NoteForm';
-import Note from './Note';
+import NoteForm from './NoteForm';
+// import Note from './Note';
 
 class Notes extends Component {
   
-  componentDidMount() {
-    const { user, loadNotes } = this.props;
-    loadNotes(user);
-  }
-
+  // componentDidMount() {
+  //   const { user, loadNotes } = this.props;
+  //   loadNotes(user);
+  // }
+  
   render() {
-    const { notes, addNote, user } = this.props;
+    const { id } = this.props;
+    if(!id) return null;
+
     return (
       <div>
         <h4>Add Comment</h4>
         <section>
-          <NoteForm onEdit={note => addNote(user, note)}/>
+          <NoteForm id={id}/>
         </section>
         <ul>
-          {notes.map(note => <Note key={note.id} {...note}/>)}
+          {/* {notes.map(note => <Note key={note.id} {...note}/>)} */}
         </ul>
       </div>);
   }
@@ -28,8 +29,9 @@ class Notes extends Component {
 
 
 export default connect(
-  // map state to props
-  (state, props) => ({ user: props.match.params.user }),
-  // map dispatch to props
-  { addNote, loadNotes }
+  state => ({ 
+    results: state.results, 
+    user: state.user,
+    listResults: state.listLoad }),
+  null
 )(Notes);

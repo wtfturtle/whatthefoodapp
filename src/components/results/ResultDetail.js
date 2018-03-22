@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './result.css';
 import { addVenue, removeVenue, editVenue } from './actions';
 import Rating from '../edit/Rating';
@@ -33,6 +34,8 @@ class ResultDetail extends Component {
 
     return (
       <div>
+        <Link to="/">⬅ Back</Link>
+
         <h1>{name}</h1> 
         <img src={imageUrl} alt="restaurant"></img>
         <p>Price: {message}</p> 

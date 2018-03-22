@@ -62,13 +62,17 @@
   }
 }
 
+.boddy-padding {
+  padding: 0 1rem;
+}
+
 .flex-li {
   display: flex;
 }
 
 .main-container {
   text-align: left;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
 }
 
 .footer {

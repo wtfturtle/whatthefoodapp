@@ -9,7 +9,9 @@ import { saveQuery } from '../search/actions';
 class Random extends Component {
 
   handleClick = () => {
-    search({ query: this.props.getRandom().payload })
+    const randomizer = this.props.getRandom().payload;
+    this.props.saveQuery({ query: randomizer });
+    search({ query: randomizer })
       .then(res => {
         this.props.saveResults([res.response.groups[0].items[Math.floor(Math.random() * 30)]]);
       }

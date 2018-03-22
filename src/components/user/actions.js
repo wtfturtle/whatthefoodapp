@@ -88,7 +88,7 @@ export function loadSaveList() {
         .then(venueKeys => {
           venueKeys.forEach(venueKey => {
             dispatch ({
-              type: VENUE_LOAD,
+              type: SAVE_LOAD,
               payload: {
                 listKey: key,
                 venueKey

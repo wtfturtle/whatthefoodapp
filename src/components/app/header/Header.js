@@ -61,7 +61,6 @@ class Header extends Component {
                   </div>
                   : <div className="flex-li">
                     <li className="flex-li-child"><Link to="/auth/signin" onClick={this.handleClick}>Log In</Link></li>
-                    <li className="flex-li-child"><Link to="/auth/signup" onClick={this.handleClick}>Sign Up</Link></li>
                   </div>
                 }
               </ul>

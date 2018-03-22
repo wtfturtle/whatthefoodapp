@@ -34,10 +34,12 @@ class Results extends Component {
 }
 
 export default connect(
-  state => ({ 
+  (state) => ({ 
     searchTerm: state.searchTerm,
     results: state.results, 
     listResults: state.listLoad,
-    venueLoad: state.venueLoad }),
+    // key: props.match.params.id
+    // venueLoad: state.venueLoad 
+  }),
   ({ loadList })
 )(Results);

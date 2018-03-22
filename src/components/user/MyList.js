@@ -9,14 +9,14 @@ class MyList extends Component {
 
   render() {
 
-    const { id, listResults } = this.props;
+    const { listResults } = this.props;
 
     return (
       <div>
         {listResults ?
           <ul>
             {listResults.map(result => (
-              <li key={result.key}><Link to={`/user/lists/${id}`}>{result.name}</Link></li>
+              <li key={result.key}><Link to={`/user/lists/${result.key}`}>{result.name}</Link></li>
             ))}
           </ul>
           :
@@ -31,8 +31,9 @@ class MyList extends Component {
 
 export default connect(
   state => ({ 
-    listResults: state.listLoad
-   }),
+    listResults: state.listLoad,
+    // venueLoad: state.venueLoad
+  }),
   { loadList }
 )(MyList);
 

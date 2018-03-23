@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { retrieve } from '../../services/foursquareApi';
 import Result from '../results/Result';
 import { loadSaveList } from '../user/actions';
+import { loadList } from './actions';
 
 class MyResults extends Component {
 
@@ -29,15 +30,18 @@ class MyResults extends Component {
     const { venues } = this.state;
 
     return (
-      <Fragment>
-        <Link className="back" to="/user">⬅ Back to my list</Link>
-        {venues[0] ? 
-          <ul className="result-ul">
-            {venues.map((venue, index) => <Result key={index} {...venue}/>)}
-          </ul>
-          : <p>No Saved Restaurants Yet</p>
-        } 
-      </Fragment>
+      <section className="main-container maxwidth-wrap">
+        <div className="body-padding">
+          <Link className="back" to="/user">⬅ Back to my list</Link>
+
+          {venues[0] ? 
+            <ul className="result-ul">
+              {venues.map((venue, index) => <Result key={index} {...venue}/>)}
+            </ul>
+            : <p>No Saved Restaurants Yet</p>
+          } 
+        </div>
+      </section>
     );
   }
 }
@@ -50,5 +54,5 @@ export default connect(
     listResults: state.listLoad,
     venueList: state.loadSaveResults
   }),
-  ({ loadSaveList })
+  ({ loadSaveList, loadList })
 )(MyResults);

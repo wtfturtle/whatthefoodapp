@@ -42,7 +42,7 @@ class Header extends Component {
             <nav id="main-menu">
               <Link to="/" className="no-line"><h1 className="mobile-logo">What The Food</h1></Link>
               <ul className="nav-ul">
-                <li><Link to="/" onClick={this.handleClick}>Home</Link></li>
+                <li><Link to="/" onClick={this.handleClick}>Search</Link></li>
                 {user 
                   ? <div className="flex-li">
                     <li><Link to="/user" onClick={this.handleClick}>{user && <span>Hello, {user.name}</span>}</Link></li>

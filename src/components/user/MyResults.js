@@ -1,46 +1,40 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { retrieve } from '../../services/foursquareApi';
-// import './result.css';
-import { loadList, loadSaveList } from '../user/actions';
-// import Result from '../results/Result';
+import Result from '../results/Result';
+import { loadSaveList } from '../user/actions';
 
 class MyResults extends Component {
-  
-  
+
+  state = {
+    venues: []
+  };
 
   componentDidMount() {
     const listKey = this.props.match.params.id;
-    console.log(listKey);
-    this.props.loadSaveList(listKey);
+    this.props.loadSaveList(listKey)
+      .then(() => {
+        return Promise.all(this.props.venueList.map((venueId => {
+          return retrieve(venueId);
+        })
+        )).then(results => {
+          this.setState({ venues: results.map((result)=> result.response) });
+        });
+      });
   }
-
-  handleRetrieve = (venueId) => {
-    this.props.saveQuery(venueId);
-    retrieve(venueId)
-      .then(res => {
-  
-        console.log(res);
-      }
-      );
-  };
-
 
   render() {
 
-    const { venueList } = this.props;
-    console.log(venueList);
+    const { venues } = this.state;
+
     return (
       <Fragment>
-       
-        <p>hi</p>
-        {/* {venueList ? 
+        {venues[0] ? 
           <ul className="result-ul">
-            {venueList.map((result, index) => <Result key={index} {...result}/>)}
+            {venues.map((venue, index) => <Result key={index} {...venue}/>)}
           </ul>
-          : <p>No Save Results Yet</p>
-        } */}
-
+          : <p>No Saved Restaurants Yet</p>
+        } 
       </Fragment>
     );
   }
@@ -50,12 +44,9 @@ export default connect(
 
   state => ({ 
     loading: state.loading,
-    // searchTerm: state.searchTerm,
-    // results: state.results, 
     venueLoad: state.venueLoad,
     listResults: state.listLoad,
-    venueList: state.loadSaveResults.payload
-    
+    venueList: state.loadSaveResults
   }),
-  ({ loadList, loadSaveList })
+  ({ loadSaveList })
 )(MyResults);

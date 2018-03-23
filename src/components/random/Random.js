@@ -4,12 +4,13 @@ import { getRandom } from './actions';
 import { search } from '../../services/foursquareApi';
 import { saveResults } from '../results/actions';
 import { saveQuery } from '../search/actions';
-// import './mylist.css';
 
 class Random extends Component {
 
   handleClick = () => {
-    search({ query: this.props.getRandom().payload })
+    const randomizer = this.props.getRandom().payload;
+    this.props.saveQuery({ query: randomizer });
+    search({ query: randomizer })
       .then(res => {
         this.props.saveResults([res.response.groups[0].items[Math.floor(Math.random() * 30)]]);
       }

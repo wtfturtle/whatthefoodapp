@@ -26,7 +26,7 @@ class Note extends Component {
     // not the imported action creator
     // const { id, created, note, removeNote, count } = this.props;
     // const { editing } = this.state;
-    const { text } = this.props;
+    const { note } = this.props;
 
     return (
       <li>
@@ -46,8 +46,7 @@ class Note extends Component {
           </article>
         }
         <p>{count} comment(s)</p> */}
-
-        {text}
+        {note.note}
        
       </li>
     );

@@ -53,12 +53,12 @@ export function venueLoad(state = {}, { type, payload }) {
   }
 }
 
-export function loadSaveResults(state = {}, { type, payload }) {
+export function loadSaveResults(state = [], { type, payload }) {
   switch(type) {
     case SAVE_LOAD:
-      return {
-        payload
-      };
+      return [
+        ...payload
+      ];
     default:
       return state;
   }

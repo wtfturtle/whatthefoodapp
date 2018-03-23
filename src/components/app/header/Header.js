@@ -57,7 +57,7 @@ class Header extends Component {
                 {user 
                   ? <div className="flex-li">
                     <li><Link to="/user" onClick={this.handleClick}>{user && <span>Hello, {user.name}</span>}</Link></li>
-                    <li><Link to="/" onClick={this.handleLogout}>Log Out</Link></li>
+                    <li className="log-out"><Link to="/" onClick={this.handleLogout}>Log Out</Link></li>
                   </div>
                   : <div className="flex-li">
                     <li className="flex-li-child"><Link to="/auth/signin" onClick={this.handleClick}>Log In</Link></li>

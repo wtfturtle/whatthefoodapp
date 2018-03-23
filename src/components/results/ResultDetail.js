@@ -57,6 +57,14 @@ class ResultDetail extends Component {
         </div>
 
         {user && 
+
+          (venueLoad[id] &&
+            <div>
+              {/* <Thumbs/> */}
+              <Rating/>
+              <Notes id={id}/>
+            </div> 
+          ) 
           <div>
             <Rating/>
             <Notes id={id}/>
@@ -70,6 +78,8 @@ class ResultDetail extends Component {
 export default connect(
   state => ({ 
     user: state.user, 
+    results: state.results,
+    venueLoad: state.venueLoad }),
     lists: state.listLoad,
     listResults: state.listLoad,
     results: state.results,

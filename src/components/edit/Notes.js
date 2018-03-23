@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import NoteForm from './NoteForm';
 import { loadNote } from './actions';
 import Note from './Note';
+import './note.css';
 
 class Notes extends Component {
 
@@ -23,7 +24,7 @@ class Notes extends Component {
         
         {noteResults 
           ?
-          <ul>
+          <ul className='notes-ul'>
             {noteResults.map((note, index) => <Note id={id} key={index} note={note}/>)}
           </ul>
           :

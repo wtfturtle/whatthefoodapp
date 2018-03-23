@@ -18,7 +18,7 @@ class MyList extends Component {
           <ul className="mylist-ul">
             {listResults.map(result => (
               <li className="mylist-li" key={result.key}>
-                <p><Link to={`/user/lists/${result.key}`}>{result.name}</Link></p>
+                <h4><Link to={`/user/lists/${result.key}`}>{result.name}</Link></h4>
                 <time>Added on: {new Date().toLocaleDateString()}</time>
               </li>
             ))}

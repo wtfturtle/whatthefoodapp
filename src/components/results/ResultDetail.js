@@ -43,11 +43,24 @@ class ResultDetail extends Component {
             <div>
               <img className="detail-img" src={imageUrl} alt={name}></img>
               <div>
-                <h3>{name}</h3> 
-                <p>Price: {message}</p> 
-                <p><Link to={url} alt={name}>{url}</Link></p>
-                <p>{phone}</p>
-                <p>{address}<br/>{city}</p>
+                <div className="info-flex">
+                  <h3>{name}</h3> 
+                  <p className="top-pad"><Link to={url} alt={name} target="_blank" rel="author noopener noreferrer"><span className="weblink">Visit Online</span></Link></p>
+                </div>
+                <div className="info-flex subtop">
+                  <div>
+                    <span className="sub">Price</span>
+                    <p>{message}</p> 
+                  </div>
+                  <div>
+                    <span className="sub">Phone</span>
+                    <p>{phone}</p>
+                  </div>
+                  <div>
+                    <span className="sub">Address</span>
+                    <p>{address}<br/>{city}</p>
+                  </div>
+                </div>
               </div>
             </div>
 

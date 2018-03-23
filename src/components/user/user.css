@@ -31,8 +31,8 @@
 
 .mylist-li:hover {
   transform: scale(1.02);
-  background-color: $red;
-  color: $white;
+  background-color: rgb(233, 184, 184);
+  
 }
 
 .mylist-li:hover ~ p { 

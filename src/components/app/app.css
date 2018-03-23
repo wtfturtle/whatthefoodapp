@@ -10,10 +10,6 @@
   grid-template-rows: auto 1fr auto;
 }
 
-.log-out {
-  padding-top: 1rem !important;
-}
-
 
 .maxwidth-wrap {
   max-width: 1200px;

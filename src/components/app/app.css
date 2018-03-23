@@ -153,6 +153,10 @@
     display: contents;
     font-size: 30px;
   }
+
+  .log-out {
+    padding-top: 1rem !important;
+  }
   .nav-ul{
     font-size: 30px;
     flex-direction: column;

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './result.css';
 import { loadList } from '../user/actions';
 import Result from './Result';
+import Loading from '../app/errorloading/Loading';
 
 class Results extends Component {
 
@@ -18,12 +19,13 @@ class Results extends Component {
           (results[0] ? 
             <div>
               <h4 className="result-text">Results for {searchTerm}</h4>
-              <p className="bread"><Link to="/">Home</Link> &nbsp;❯&nbsp; <Link to="/">{searchTerm}</Link></p>
+              <p className="bread"><Link to="/">Search</Link> &nbsp;❯&nbsp; {searchTerm}</p>
               <ul className="result-ul">
                 {results.map((result, index) => <Result key={index} {...result}/>)}
               </ul>
             </div>
-            : <h2>Sorry, No Results for {searchTerm} </h2>
+            : <Loading/>
+            // <h2 className="none">Sorry, No Results for {searchTerm} </h2>
           )
         }
 

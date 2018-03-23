@@ -141,7 +141,7 @@
   
 }
 
-@media (min-width: 550px) {
+@media (min-width: 690px) {
 
   .mobile-logo {
     display: none;
@@ -177,7 +177,7 @@
 
 /* ----- Burger Media Query ----- */
 
-@media (max-width: 550px) {
+@media (max-width: 690px) {
   
   .nav-ul{
     font-size: 30px;

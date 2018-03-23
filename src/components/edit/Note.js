@@ -32,7 +32,7 @@ class Note extends Component {
     return (
       <li className="notes-li">
         <p>{note.note}</p>
-        <time>Added on: {new Date().toLocaleDateString()}</time>
+        <time>Added on: {note.date}</time>
       </li>
     );
   }

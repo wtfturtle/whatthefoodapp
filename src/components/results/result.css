@@ -8,6 +8,10 @@
   padding: 0;
 }
 
+.none {
+  color: white;
+}
+
 .back {
   background-color: $lightgray;
   padding: 0.6rem 1rem;

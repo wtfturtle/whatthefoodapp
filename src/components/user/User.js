@@ -36,16 +36,17 @@ class User extends Component {
           {user && <h4>Hello, {user.name}</h4>}
 
           <div className="user-flex">
-            <form onSubmit={this.handleSubmit}>
-              <legend>Create List</legend>
-              <label htmlFor="listTitle">
+            <div className="createform">
+              <form onSubmit={this.handleSubmit}>
+                
+                <label htmlFor="listTitle"> Create List</label>
                 <input id="listTitle" value={list} onChange={this.handleChange}/>
-              </label>
-              <button>Create List</button>
-            </form>
-            
-            <div>
-              <h4>My List</h4>
+                
+                <button>Create List</button>
+              </form>
+            </div>
+            <div className="mylist-area">
+              <h5>My List</h5>
               { user && <MyList user={user}/>}
             </div>
           </div>

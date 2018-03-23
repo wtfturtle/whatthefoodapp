@@ -4,6 +4,7 @@ import './home.css';
 import Search from '../search/Search';
 import Results from '../results/Results';
 import Random from '../random/Random';
+import Loading from '../app/errorloading/Loading';
 
 class Home extends Component {
 
@@ -23,7 +24,7 @@ class Home extends Component {
 
         <section className="main-container maxwidth-wrap">
           <div className="body-padding">
-
+            <Loading/>
           
             <Results/>
         

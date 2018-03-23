@@ -85,8 +85,9 @@ export function loadSaveList(listKey) {
   };
 }
 
-export function loadStar() {
-  return (dispatch, getState) => {
-    type: 
-  }
+export function loadStar(rating, venueId) {
+  return {
+    type: SAVE_STAR,
+    payload: rating, venueId
+  };
 } 

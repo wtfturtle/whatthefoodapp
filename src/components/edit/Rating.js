@@ -7,6 +7,8 @@ import { loadStar } from '../user/actions';
 
 class Rating extends Component {
 
+
+
   constructor() {
     super();
 
@@ -18,7 +20,7 @@ class Rating extends Component {
   onStarClick = (nextValue, prevValue, name) => {
     console.log('name: %s, nextValue: %s, prevValue: %s', name, nextValue, prevValue);
     this.setState({ rating: nextValue });
-
+    this.props.loadStar(this.state.rating);
   };
 
 
@@ -41,6 +43,9 @@ class Rating extends Component {
 }
 
 export default connect(
-  state => ({ user: state.user }),
-  null
+  state => ({ 
+    user: state.user,
+    venueLoad: state.venueLoad
+  }),
+  { loadStar }
 )(Rating);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './search.css';
 export default class SearchForm extends Component {
 
   constructor(props) {
@@ -31,7 +31,7 @@ export default class SearchForm extends Component {
 
     return (
       <form className="search-form" onSubmit={this.handleSubmit}>
-        <fieldset>
+        <fieldset className="search-box">
           
           <legend className="inputs"></legend>
 
@@ -41,7 +41,7 @@ export default class SearchForm extends Component {
 
         </fieldset>
 
-        <button type="submit">Search</button>
+        <button className="submit-button" type="submit">Search</button>
       </form>
     );
   }

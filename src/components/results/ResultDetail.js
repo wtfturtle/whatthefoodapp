@@ -5,6 +5,8 @@ import './result.css';
 import { addVenue, removeVenue, editVenue } from './actions';
 import Rating from '../edit/Rating';
 import Notes from '../edit/Notes';
+import AddDetail from '../buttons/AddDetail';
+import RemoveDetail from '../buttons/RemoveDetail';
 
 
 class ResultDetail extends Component {
@@ -27,11 +29,7 @@ class ResultDetail extends Component {
     const { address } = result.venue.location;
     const { city } = result.venue.location;
     const { message } = result.venue.price || 'Not Listed';
-    const { user } = this.props;
-
-    // TODO: add conditional (after user check) to see if rest. is saved. If so, show edit and remove buttons.
-    // If user and rest saved, call component that shows user's input about rest. (Notes, rating, what list)
-    // if editing, provide forms for editing data in those fields. 
+    const { user, venueLoad } = this.props;
 
     return (
       <div>
@@ -48,14 +46,18 @@ class ResultDetail extends Component {
             <p>{phone}</p>
             <p>{address}</p>
             <p>{city}</p>
-            {user &&
-          <button onClick={addVenue(this.id)}>Save</button>} 
+            {user && 
+              (venueLoad[id] ? 
+                <RemoveDetail venue={result.venue}/> 
+                :  
+                <AddDetail venue={result.venue}/>
+              )        
+            } 
           </div>
         </div>
 
         {user && 
           <div>
-            {/* <Thumbs/> */}
             <Rating/>
             <Notes id={id}/>
           </div>  
@@ -68,6 +70,11 @@ class ResultDetail extends Component {
 export default connect(
   state => ({ 
     user: state.user, 
-    results: state.results }),
+    lists: state.listLoad,
+    listResults: state.listLoad,
+    results: state.results,
+    venueLoad: state.venueLoad
+    // venueId: props.match.params.id
+  }),
   { addVenue, removeVenue, editVenue }
 )(ResultDetail);

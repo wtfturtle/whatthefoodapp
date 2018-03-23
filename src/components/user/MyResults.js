@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { retrieve } from '../../services/foursquareApi';
-import Result from '../results/Result';
+import MyResult from './MyResult';
 import { loadSaveList } from '../user/actions';
 
 class MyResults extends Component {
@@ -26,12 +26,13 @@ class MyResults extends Component {
   render() {
 
     const { venues } = this.state;
+    console.log(venues);
 
     return (
       <Fragment>
         {venues[0] ? 
           <ul className="result-ul">
-            {venues.map((venue, index) => <Result key={index} {...venue}/>)}
+            {venues.map((venue, index) => <MyResult key={index} {...venue}/>)}
           </ul>
           : <p>No Saved Restaurants Yet</p>
         } 

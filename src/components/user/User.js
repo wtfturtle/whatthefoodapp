@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MyList from './MyList';
 import { connect } from 'react-redux';
 import { addList, loadList } from './actions';
+import './user.css';
 
 class User extends Component {
 
@@ -30,19 +31,26 @@ class User extends Component {
 
     return (
       <section className="main-container maxwidth-wrap">
+        <div className="body-padding">
 
-        {user && <h4>Hello, {user.name}</h4>}
+          {user && <h4>Hello, {user.name}</h4>}
 
-        <form onSubmit={this.handleSubmit}>
-          <legend>Create List</legend>
-          <label htmlFor="listTitle">
-            <input id="listTitle" value={list} onChange={this.handleChange}/>
-          </label>
-          <button>Create List</button>
-        </form>
+          <div className="user-flex">
+            <form onSubmit={this.handleSubmit}>
+              <legend>Create List</legend>
+              <label htmlFor="listTitle">
+                <input id="listTitle" value={list} onChange={this.handleChange}/>
+              </label>
+              <button>Create List</button>
+            </form>
+            
+            <div>
+              <h4>My List</h4>
+              { user && <MyList user={user}/>}
+            </div>
+          </div>
 
-        { user && <MyList user={user}/>}
-       
+        </div>
       </section>
     );
   }

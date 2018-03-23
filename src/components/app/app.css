@@ -15,7 +15,29 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  animation: pageSlide 1s ease-out;
 }
+
+@keyframes pageSlide {
+  /* 0% {
+    opacity: .0;
+    transform: translate(0, 100%);
+  } */
+  0% {
+    opacity: 0;
+    transform: translate(0, 0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0%);
+  }
+}
+
+/* main {
+  article {
+    animation: pageSlide 1s ease-out;
+  }
+} */
 
 
 #header {

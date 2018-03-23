@@ -1,0 +1,10 @@
+@import '../../styles/variables.css';
+
+
+@media (min-width: 500px) {
+
+  .user-flex {
+    display: flex;
+  }
+
+}

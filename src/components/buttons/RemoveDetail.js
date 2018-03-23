@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { removeVenue } from '../results/actions';
 import { loadVenues } from '../user/actions';
+import './button.css';
 
 class RemoveDetail extends Component {
 

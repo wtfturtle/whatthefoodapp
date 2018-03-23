@@ -8,6 +8,19 @@
   padding: 0;
 }
 
+.back {
+  background-color: $lightgray;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  transition: 0.3s ease all;
+
+  &:hover {
+    background-color: $red;
+    color: $white;
+    margin: 0 0 0 -5px;
+  }
+}
+
 .img-wrap {
   /* max-width: 370px; */
   max-height: 250px;
@@ -37,8 +50,39 @@
 }
 
 @media (min-width: 715px) {
+  .result-li {
+    padding: 1.4rem;
+  }
+
   .result-li:hover{
     margin: -2px 0 0;
     box-shadow: 0px 7px 27px -2px rgba(0,0,0,0.20);
+  }
+}
+
+.hr {
+  margin: 2rem 0;
+  border-top: 1px solid lightgray;
+}
+
+.edit-detail {
+  padding: 1rem;
+}
+
+.detail-img {
+  width: 100%;
+}
+
+.detail-flex {
+  background-color: $white;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 715px) {
+  .detail-flex {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
   }
 }

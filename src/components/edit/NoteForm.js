@@ -30,7 +30,7 @@ class NoteForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input required name="note" value={note} onChange={this.handleChange}/>
-        <button type="submit">{ id ? 'Update' : 'Add' }</button>
+        <button type="submit">{ id ? 'Add' : 'Update' }</button>
       </form>
     );
   }

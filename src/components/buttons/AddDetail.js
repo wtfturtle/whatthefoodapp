@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addVenue } from '../results/actions';
 import { loadVenues } from '../user/actions';
+import './button.css';
 
 class AddDetail extends Component {
 
@@ -35,9 +36,9 @@ class AddDetail extends Component {
       (clicked ?
         <div>
           <button className="button" onClick={this.handleUnclick}>X</button>
-          <ul>
+          <ul className="list-ul">
             {lists.map((list, index) => (
-              <li key={index}>
+              <li className="list-li" key={index}>
                 <button className="button" onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
               </li>
             ))}

@@ -64,15 +64,3 @@ export function loadSaveResults(state = {}, { type, payload }) {
   }
 }
 
-export function star(state = {}, { type, payload }) {
-  switch(type) {
-    case SAVE_STAR:
-      return {
-        state,
-        payload
-      };
-    default:
-      return state;
-  }
-}
-

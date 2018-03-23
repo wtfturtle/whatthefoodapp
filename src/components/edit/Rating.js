@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 // import './result.css';
 import StarRatingComponent from 'react-star-rating-component';
 // import { addVenue, removeVenue, editVenue } from './actions';
+import { loadStar } from '../user/actions';
 
 class Rating extends Component {
 
@@ -10,21 +11,18 @@ class Rating extends Component {
     super();
 
     this.state = {
-      rating: 1
+      rating: ''
     };
   }
 
   onStarClick = (nextValue, prevValue, name) => {
     console.log('name: %s, nextValue: %s, prevValue: %s', name, nextValue, prevValue);
     this.setState({ rating: nextValue });
+
   };
 
 
   render() {
-
-    // TODO: add conditional (after user check) to see if rest. is saved. If so, show edit and remove buttons.
-    // If user and rest saved, call component that shows user's input about rest. (Notes, rating, what list)
-    // if editing, provide forms for editing data in those fields. 
 
     const { rating } = this.state;
 

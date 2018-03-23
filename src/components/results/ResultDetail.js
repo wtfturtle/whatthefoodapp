@@ -5,6 +5,8 @@ import './result.css';
 import { addVenue, removeVenue, editVenue } from './actions';
 import Rating from '../edit/Rating';
 import Notes from '../edit/Notes';
+import AddDetail from '../buttons/AddDetail';
+import RemoveDetail from '../buttons/RemoveDetail';
 
 
 class ResultDetail extends Component {
@@ -29,7 +31,6 @@ class ResultDetail extends Component {
     const { message } = result.venue.price || 'Not Listed';
     const { user, venueLoad } = this.props;
 
-
     return (
       <div>
         <div>
@@ -45,12 +46,18 @@ class ResultDetail extends Component {
             <p>{phone}</p>
             <p>{address}</p>
             <p>{city}</p>
-            {user &&
-          <button onClick={addVenue(this.id)}>Save</button>} 
+            {user && 
+              (venueLoad[id] ? 
+                <RemoveDetail venue={result.venue}/> 
+                :  
+                <AddDetail venue={result.venue}/>
+              )        
+            } 
           </div>
         </div>
 
         {user && 
+
           (venueLoad[id] &&
             <div>
               {/* <Thumbs/> */}
@@ -58,6 +65,10 @@ class ResultDetail extends Component {
               <Notes id={id}/>
             </div> 
           ) 
+          <div>
+            <Rating/>
+            <Notes id={id}/>
+          </div>  
         }
       </div>
     );
@@ -69,5 +80,11 @@ export default connect(
     user: state.user, 
     results: state.results,
     venueLoad: state.venueLoad }),
+    lists: state.listLoad,
+    listResults: state.listLoad,
+    results: state.results,
+    venueLoad: state.venueLoad
+    // venueId: props.match.params.id
+  }),
   { addVenue, removeVenue, editVenue }
 )(ResultDetail);

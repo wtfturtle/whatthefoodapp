@@ -27,11 +27,8 @@ class ResultDetail extends Component {
     const { address } = result.venue.location;
     const { city } = result.venue.location;
     const { message } = result.venue.price || 'Not Listed';
-    const { user } = this.props;
+    const { user, venueLoad } = this.props;
 
-    // TODO: add conditional (after user check) to see if rest. is saved. If so, show edit and remove buttons.
-    // If user and rest saved, call component that shows user's input about rest. (Notes, rating, what list)
-    // if editing, provide forms for editing data in those fields. 
 
     return (
       <div>
@@ -54,11 +51,13 @@ class ResultDetail extends Component {
         </div>
 
         {user && 
-          <div>
-            {/* <Thumbs/> */}
-            <Rating/>
-            <Notes id={id}/>
-          </div>  
+          (venueLoad[id] &&
+            <div>
+              {/* <Thumbs/> */}
+              <Rating/>
+              <Notes id={id}/>
+            </div> 
+          ) 
         }
       </div>
     );
@@ -68,6 +67,7 @@ class ResultDetail extends Component {
 export default connect(
   state => ({ 
     user: state.user, 
-    results: state.results }),
+    results: state.results,
+    venueLoad: state.venueLoad }),
   { addVenue, removeVenue, editVenue }
 )(ResultDetail);

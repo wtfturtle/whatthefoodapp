@@ -1,5 +1,4 @@
 import { places } from './randomPlaces';
-import { QUERY, searchTerm } from '../search/reducers';
 import { RANDOM_SEARCH } from './reducers';
 
 function randomize() {

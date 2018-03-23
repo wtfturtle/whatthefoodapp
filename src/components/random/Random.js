@@ -4,7 +4,6 @@ import { getRandom } from './actions';
 import { search } from '../../services/foursquareApi';
 import { saveResults } from '../results/actions';
 import { saveQuery } from '../search/actions';
-// import './mylist.css';
 
 class Random extends Component {
 

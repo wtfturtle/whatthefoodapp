@@ -11,7 +11,7 @@ class MyResults extends Component {
   };
 
   componentDidMount() {
-    const listKey = this.props.match.params.id;
+    const listKey = this.props.match.params.listKey;
     this.props.loadSaveList(listKey)
       .then(() => {
         return Promise.all(this.props.venueList.map((venueId => {
@@ -24,15 +24,14 @@ class MyResults extends Component {
   }
 
   render() {
-
+    const listKey = this.props.match.params.listKey;
     const { venues } = this.state;
-    console.log(venues);
 
     return (
       <Fragment>
         {venues[0] ? 
           <ul className="result-ul">
-            {venues.map((venue, index) => <MyResult key={index} {...venue}/>)}
+            {venues.map((venue, index) => <MyResult key={index} {...venue} listKey={listKey}/>)}
           </ul>
           : <p>No Saved Restaurants Yet</p>
         } 

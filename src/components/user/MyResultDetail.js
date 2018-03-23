@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../results/result.css';
-import { addVenue, removeVenue, editVenue } from './actions';
+import { addVenue, removeVenue, editVenue, loadSaveList } from './actions';
 import { retrieve } from '../../services/foursquareApi';
 import Rating from '../edit/Rating';
 import Notes from '../edit/Notes';
@@ -17,29 +17,30 @@ class MyResultDetail extends Component {
   };
 
   componentDidMount() {
-
-    const { id } = this.props.match.params; 
+    const { id, listKey } = this.props.match.params;
+    this.props.loadSaveList(listKey) ;
     retrieve(id).then(data => {
       this.setState({ result: data.response });
     });
-    console.log(this.state.result);  
   }
 
   render() {
 
+    if(!this.state.result.venue) return null;
+    if(!this.props.venueLoad[this.props.match.params.id]) return null;
     const { result } = this.state;
-    console.log(result);
 
-    const path = result.photos.groups[0].items[0] || null;
+    const path = result.venue.photos.groups[0].items[0] || null;
     
     const imageUrl = `${path.prefix}original${path.suffix}` || null;
 
+    const { id, listKey } = this.props.match.params;
     const { name, url } = result.venue;
     const { phone } = result.venue.contact || null;
     const { address } = result.venue.location;
     const { city } = result.venue.location;
     const { message } = result.venue.price || 'Not Listed';
-    const { user, venueLoad } = this.props;
+    const { user, loadSaveResults, venueLoad } = this.props;
 
     return (
       <div>
@@ -52,12 +53,12 @@ class MyResultDetail extends Component {
           <div>
             <h3>{name}</h3> 
             <p>Price: {message}</p> 
-            <p><Link to={url} alt={name}>{url}</Link></p>
+            <p><a href={url} alt={name}>{url}</a></p>
             <p>{phone}</p>
             <p>{address}</p>
             <p>{city}</p>
-            {user && 
-              (venueLoad[id] ? 
+            {user && loadSaveResults &&
+              (venueLoad[id][listKey] ? 
                 <RemoveDetail venue={result.venue}/> 
                 :  
                 <AddDetail venue={result.venue}/>
@@ -67,7 +68,7 @@ class MyResultDetail extends Component {
         </div>
 
         {user && 
-          (venueLoad[id] && 
+          (loadSaveResults.includes(id) && 
             <div>
               <Rating/>
               <Notes id={id}/>
@@ -85,7 +86,8 @@ export default connect(
     lists: state.listLoad,
     listResults: state.listLoad,
     results: state.results,
+    loadSaveResults: state.loadSaveResults,
     venueLoad: state.venueLoad
   }),
-  { addVenue, removeVenue, editVenue }
+  { addVenue, removeVenue, editVenue, loadSaveList }
 )(MyResultDetail);

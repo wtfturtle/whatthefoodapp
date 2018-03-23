@@ -4,6 +4,7 @@ export const VENUE_LOAD = 'VENUE_LOAD';
 export const SAVE_LOAD = 'SAVE_LOAD';
 export const VENUE_ADD = 'VENUE_ADD';
 export const VENUE_REMOVE = 'VENUE_REMOVE';
+export const SAVE_STAR = 'SAVE_STAR';
 
 export function add(state = [], { type, payload }) {
   switch(type) {
@@ -62,3 +63,16 @@ export function loadSaveResults(state = {}, { type, payload }) {
       return state;
   }
 }
+
+export function star(state = {}, { type, payload }) {
+  switch(type) {
+    case SAVE_STAR:
+      return {
+        state,
+        payload
+      };
+    default:
+      return state;
+  }
+}
+

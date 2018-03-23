@@ -39,9 +39,9 @@ export default class SearchForm extends Component {
           <label htmlFor="query">
             <div className="search-flex">
               
-                <input id="search-input" name="query" value={query} onChange={this.handleChange} placeholder="Search restaurants"/>
+              <input id="search-input" name="query" value={query} onChange={this.handleChange} placeholder="Search restaurants"/>
             
-                <button type="submit">Search</button>
+              <button type="submit">Search</button>
               
             </div>
           </label>

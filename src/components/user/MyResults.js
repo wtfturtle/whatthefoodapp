@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { retrieve } from '../../services/foursquareApi';
 import Result from '../results/Result';
 import { loadSaveList } from '../user/actions';
@@ -29,6 +30,7 @@ class MyResults extends Component {
 
     return (
       <Fragment>
+        <Link className="back" to="/user">⬅ Back to my list</Link>
         {venues[0] ? 
           <ul className="result-ul">
             {venues.map((venue, index) => <Result key={index} {...venue}/>)}

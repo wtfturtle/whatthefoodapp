@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './mylist.css';
 import { loadList } from './actions';
+import './user.css';
 
 class MyList extends Component {
 
@@ -14,16 +15,17 @@ class MyList extends Component {
     return (
       <div>
         {listResults ?
-          <ul>
+          <ul className="mylist-ul">
             {listResults.map(result => (
-              <li key={result.key}><Link to={`/user/lists/${result.key}`}>{result.name}</Link></li>
+              <li className="mylist-li" key={result.key}>
+                <p><Link to={`/user/lists/${result.key}`}>{result.name}</Link></p>
+                <time>Added on: {new Date().toLocaleDateString()}</time>
+              </li>
             ))}
           </ul>
           :
           <p>Empty List</p>
         }
-
-        <h2>hi</h2>
       </div>
     );
   }

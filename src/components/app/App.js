@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './app.css';
-import Loading from './errorloading/Loading';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Home from '../home/Home';
@@ -28,7 +27,6 @@ class App extends Component {
           <Fragment>
             <Header/>
             <main role="main" id="main">
-              <Loading/>
               <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/auth/signin" component={Signin}/>

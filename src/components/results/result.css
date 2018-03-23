@@ -1,3 +1,4 @@
+@import '../../styles/variables.css';
 
 .result-ul {
   display: grid;
@@ -7,9 +8,85 @@
   padding: 0;
 }
 
+.none {
+  color: white;
+}
+
+.back {
+  background-color: $lightgray;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  transition: 0.3s ease all;
+
+  &:hover {
+    background-color: $red;
+    color: $white;
+    margin: 0 0 0 -5px;
+  }
+}
+
 .img-wrap {
-  max-width: 370px;
+  /* max-width: 370px; */
   max-height: 250px;
   overflow: hidden;
 }
 
+.result-text {
+  margin: 0;
+}
+
+.bread {
+  transition: 0.3s ease all;
+
+  a {
+    border-bottom: 3px solid #f5f5f5;
+  }
+  
+  a:hover {
+    border-bottom: 3px solid $red;
+  }
+}
+
+.result-li {
+  background-color: $white;
+  padding: 1rem;
+  transition: 0.3s ease all;
+}
+
+@media (min-width: 715px) {
+  .result-li {
+    padding: 1.4rem;
+  }
+
+  .result-li:hover{
+    margin: -2px 0 0;
+    box-shadow: 0px 7px 27px -2px rgba(0,0,0,0.20);
+  }
+}
+
+.hr {
+  margin: 2rem 0;
+  border-top: 1px solid lightgray;
+}
+
+.edit-detail {
+  padding: 1rem;
+}
+
+.detail-img {
+  width: 100%;
+}
+
+.detail-flex {
+  background-color: $white;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 715px) {
+  .detail-flex {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
+}

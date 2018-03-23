@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadNote } from './actions';
+import './note.css';
 // import { updateNote, removeNote } from './actions';
 // import NoteForm from './NoteForm';
 
@@ -29,25 +30,9 @@ class Note extends Component {
     const { note } = this.props;
 
     return (
-      <li>
-        {/* {editing ? 
-          <div>
-            <NoteForm id={id} note={note} onEdit={this.handleEdit}/> 
-            <button onClick={this.handleToggleEdit}>cancel</button>
-          </div>
-          :
-          <article>
-            <p>
-              {note}
-              &nbsp;<button onClick={() => removeNote(id)}>X</button>
-            </p>
-            <time>{new Date(created).toLocaleDateString()}</time>
-            <button onClick={this.handleToggleEdit}>✎</button>
-          </article>
-        }
-        <p>{count} comment(s)</p> */}
-        {note.note}
-       
+      <li className="notes-li">
+        <p>{note.note}</p>
+        <time>Added on: {note.date}</time>
       </li>
     );
   }

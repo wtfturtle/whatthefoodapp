@@ -1,0 +1,53 @@
+@import '../../styles/variables.css';
+
+.mylist-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.createform {
+  width: 100%;
+  margin: 1rem 2rem 0 0;
+}
+
+.listTitle {
+  margin: 0 0 0.4rem 0;
+  font-weight: 500;
+}
+
+.mylist-area {
+  width: 100%;
+}
+
+.mylist-li {
+  padding: 1rem;
+  background-color: rgb(219, 219, 219);
+  margin: 1rem 0;
+  transition: 0.3s ease all;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+
+.mylist-li:hover {
+  transform: scale(1.02);
+  background-color: $red;
+  color: $white;
+}
+
+.mylist-li:hover ~ p { 
+  color: $white;
+}
+
+@media (min-width: 500px) {
+
+  .user-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .createform {
+    width: 300px;
+  }
+
+}

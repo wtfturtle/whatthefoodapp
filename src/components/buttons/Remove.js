@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { removeVenue } from '../results/actions';
 import { loadVenues } from '../user/actions';
+import './button.css';
 
 class Remove extends Component {
 
@@ -16,7 +17,10 @@ class Remove extends Component {
     const { id } = this.props.venue;
 
     return (
-      <button onClick={() => this.handleRemove(Object.keys(venueLoad[id])[0], id)}>Remove</button>
+      <div className="remove-flex">
+        <button className="button-saved">✓ Saved</button>
+        <button className="button-remove" onClick={() => this.handleRemove(Object.keys(venueLoad[id])[0], id)}>✘ Remove</button>
+      </div>
     );
   }
 }

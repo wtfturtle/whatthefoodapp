@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './search.css';
 
 export default class SearchForm extends Component {
 
@@ -36,12 +37,17 @@ export default class SearchForm extends Component {
           <legend className="inputs"></legend>
 
           <label htmlFor="query">
-            <input name="query" value={query} onChange={this.handleChange} placeholder="Search restaurants"/>
+            <div className="search-flex">
+              
+                <input id="search-input" name="query" value={query} onChange={this.handleChange} placeholder="Search restaurants"/>
+            
+                <button type="submit">Search</button>
+              
+            </div>
           </label>
 
         </fieldset>
 
-        <button type="submit">Search</button>
       </form>
     );
   }

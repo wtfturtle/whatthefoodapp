@@ -58,12 +58,12 @@ a {
   color: $black;
   transition: 0.3s ease all;
   padding: 0 0 3px;
-  border-bottom: 3px solid $white;
+  /* border-bottom: 3px solid $white; */
 }
 
 a:hover {
   color: $black;
-  border-bottom: 3px solid $gray;
+  /* border-bottom: 3px solid $gray; */
 }
 
 /*  -------- Media Queries ------- */

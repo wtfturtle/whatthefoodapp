@@ -4,13 +4,17 @@ import { notesByUser } from '../../services/firebaseDataApi';
 export function addNote(note, venueId) {
   return (dispatch, getState) => {
     
+    
+    const date = new Date().toLocaleString();
+    const newDetail = { date, note };
+
     let { uid } = getState().user;
-    notesByUser.child(uid).child(venueId).push(note)
-      .then(data => {
-        const newNote = { key: data.key, note };
+    notesByUser.child(uid).child(venueId).push().set(newDetail)
+      .then(() => {
+        // const newNote = { key: data.key, note };
         dispatch({
           type: NOTE_ADD,
-          payload: newNote
+          payload: newDetail
         });    
       });
   };
@@ -26,10 +30,11 @@ export function loadNote(id) {
       payload: notesByUser.child(uid).child(id).once('value')
         .then(data => {
           const noteResults = data.val();
+          if(!noteResults) return [];
 
           const results = Object.keys(noteResults).map(key => {
             const note = noteResults[key];
-            return { key, note };
+            return { key, ...note };
           });
           return results;
         })

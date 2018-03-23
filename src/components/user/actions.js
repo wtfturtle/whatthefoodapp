@@ -1,4 +1,4 @@
-import { ADD_LIST, LOAD_LIST, VENUE_LOAD, SAVE_LOAD, SAVE_STAR } from './reducers';
+import { ADD_LIST, LOAD_LIST, VENUE_LOAD, SAVE_LOAD } from './reducers';
 import { listByUser, users, lists } from '../../services/firebaseDataApi';
 
 export function addList(list) {
@@ -85,8 +85,8 @@ export function loadSaveList(listKey) {
   };
 }
 
-export function loadStar() {
-  return (dispatch, getState) => {
-    type: 
-  }
-} 
+// export function loadStar() {
+//   return (dispatch, getState) => {
+//     type: 
+//   }
+// } 

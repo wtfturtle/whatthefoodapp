@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './result.css';
 import { loadList } from '../user/actions';
 import Result from './Result';
@@ -16,7 +17,8 @@ class Results extends Component {
         {searchTerm &&
           (results[0] ? 
             <div>
-              <h3>Results for {searchTerm}</h3>
+              <h4 className="result-text">Results for {searchTerm}</h4>
+              <p className="bread"><Link to="/">Home</Link> &nbsp;❯&nbsp; <Link to={searchTerm}>{searchTerm}</Link></p>
               <ul className="result-ul">
                 {results.map((result, index) => <Result key={index} {...result}/>)}
               </ul>

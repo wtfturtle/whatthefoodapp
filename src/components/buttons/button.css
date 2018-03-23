@@ -1,0 +1,40 @@
+@import '../../styles/variables.css';
+
+button.button {
+  width: 100%;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.list-ul {
+  list-style-type: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  background-color: $red;
+  padding: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.list-li {
+  padding: 0.2rem 0;  
+}
+
+.remove-flex {
+  display: flex;
+}
+
+.button-saved {
+  width: 100%;
+  margin: 0 0.2rem 0;
+
+  &:hover {
+    background-color: $red;
+  }
+}
+
+.button-remove {
+  background-color: $gray;
+  width: 100%;
+  margin: 0 0 0 0.2rem;
+}

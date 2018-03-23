@@ -34,16 +34,16 @@ class AddDetail extends Component {
     return (
       (clicked ?
         <div>
-          <button onClick={this.handleUnclick}>X</button>
+          <button className="button" onClick={this.handleUnclick}>X</button>
           <ul>
             {lists.map((list, index) => (
               <li key={index}>
-                <button onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
+                <button className="button" onClick={() => this.handleAdd(list.key, id, name)}>{list.name}</button>
               </li>
             ))}
           </ul>
         </div>
-        : <button onClick={this.handleClick}>Save</button>
+        : <button className="button" onClick={this.handleClick}>Save</button>
       )
     );
   }

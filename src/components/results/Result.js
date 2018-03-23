@@ -26,8 +26,7 @@ class Result extends Component {
           <Link to={`/results/${id}`}><img src={imageUrl} alt="restaurant"/></Link>
         </div>
         <h4><Link to={`/results/${id}`}>{name}</Link></h4> 
-        <p>Price: {message}</p> 
-        <p>{address}</p>
+        <p>Price: {message}<br/>{address}</p>
         {user && 
           (venueLoad[id] ? 
             <Remove venue={this.props.venue}/> 

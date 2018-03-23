@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import '../app/app.css';
+import './home.css';
 import Search from '../search/Search';
 import Results from '../results/Results';
 import Random from '../random/Random';
@@ -10,13 +10,26 @@ class Home extends Component {
   render() {
 
     return (
-      <section className="main-container maxwidth-wrap">
-        <div className="body-padding">
-          <Search/>
-          <Random/>
-          <Results/>
+      <Fragment>  
+
+        <div className="search-image">
+          <div className="search-padding">
+            <div className="search-container">
+              <Search/>
+              <Random/>
+            </div>
+          </div>
         </div>
-      </section>
+
+        <section className="main-container maxwidth-wrap">
+          <div className="body-padding">
+
+          
+            <Results/>
+        
+          </div>
+        </section>
+      </Fragment>
     );
   }
 }

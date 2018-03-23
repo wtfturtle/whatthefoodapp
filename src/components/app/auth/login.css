@@ -80,6 +80,7 @@ button {
   font-weight: 600;
   padding: 0.7rem 0.9rem;
   transition: 0.3s ease all;
+  cursor: pointer;
 
   &:disabled {
     opacity: .5;
@@ -88,7 +89,7 @@ button {
 }
 
 button:hover {
-  background: #3b5243;
+  background: #575757;
 }
 
 .hint {

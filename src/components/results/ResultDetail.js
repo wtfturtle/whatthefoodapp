@@ -35,7 +35,7 @@ class ResultDetail extends Component {
       <div>
         <div>
           <div>
-            <Link to="/">⬅ Back</Link>
+            <Link to="/">⬅ Back to results</Link>
             <img src={imageUrl} alt="restaurant"></img>
           </div>
 
@@ -57,13 +57,15 @@ class ResultDetail extends Component {
         </div>
 
         {user && 
-          (venueLoad[id] && 
+          // (venueLoad[id] && 
             <div>
               <Rating/>
               <Notes id={id}/>
             </div> 
-          ) 
+          // ) 
         }
+
+        <Link to="/">⬅ Back to results</Link>
       </div>
     );
   }

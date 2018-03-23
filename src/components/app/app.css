@@ -59,13 +59,9 @@
     
     a:hover {
       color: $black;
-      border-bottom: 3px solid $gray;
+      border-bottom: 3px solid $red;
     }
   }
-}
-
-.boddy-padding {
-  padding: 0 1rem;
 }
 
 .flex-li {
@@ -80,15 +76,24 @@
 .footer {
   text-align: left;
   color: $gray;
+
+  a {
+    border-bottom: 3px solid $white;
+  }
   
+  a:hover {
+    border-bottom: 3px solid $red;
+  }
 }
 
 /* ----- Media Queries ----- */
 
 @media (min-width: 200px) {
   .mobile-logo{
-    display: none;
+    display: contents;
+    font-size: 1.3rem;;
   }
+
   .logo {
     font-size: 1.3rem;
     padding: 7px 0 0;
@@ -105,10 +110,10 @@
 
   .footer {
     text-align: center;
-    /* margin: 1rem 0; */
+    font-size: 0.8rem;
 
     p {
-      line-height: 5px;
+      line-height: 10px;
     }
   }
   
@@ -119,6 +124,7 @@
   .mobile-logo {
     display: none;
   }
+
   #header {
     padding: 2rem;
   }
@@ -135,6 +141,7 @@
   .footer {
     display: flex;
     justify-content: space-between;
+    font-size: 1rem;
   }
 
   .nav-ul{
@@ -149,15 +156,12 @@
 /* ----- Burger Media Query ----- */
 
 @media (max-width: 550px) {
-  .mobile-logo {
-    display: contents;
-    font-size: 30px;
-  }
+  
   .nav-ul{
     font-size: 30px;
     flex-direction: column;
     text-align: right;
-    padding-top: 1rem;
+    padding-top: 4rem;
     padding-right: 2.5rem;
   }
   

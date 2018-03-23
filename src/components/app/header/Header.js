@@ -29,17 +29,6 @@ class Header extends Component {
     const { error, user } = this.props;
     const { menu } = this.state;
 
-    // this.nav = dom.querySelector('nav#main-menu');
-    // const checkbox = dom.querySelector('input');
-    // this.nav.addEventListener('click', () => {
-    //   checkbox.click(
-    //     checkbox.addEventListener('change', event => {
-    //       event.preventDefault();
-    //     })
-    //   );
-    // });
-
-
     return (
       <header role="banner" id="header">
         <section className="head-container maxwidth-wrap">
@@ -51,13 +40,13 @@ class Header extends Component {
 
             <div id="burger"><span></span><span></span><span></span></div>
             <nav id="main-menu">
-              <h1 className="mobile-logo">What The Food</h1>
+              <Link to="/" className="no-line"><h1 className="mobile-logo">What The Food</h1></Link>
               <ul className="nav-ul">
                 <li><Link to="/" onClick={this.handleClick}>Home</Link></li>
                 {user 
                   ? <div className="flex-li">
                     <li><Link to="/user" onClick={this.handleClick}>{user && <span>Hello, {user.name}</span>}</Link></li>
-                    <li className="log-out"><Link to="/" onClick={this.handleLogout}>Log Out</Link></li>
+                    <li className="flex-li-child"><Link to="/" onClick={this.handleLogout}>Log Out</Link></li>
                   </div>
                   : <div className="flex-li">
                     <li className="flex-li-child"><Link to="/auth/signin" onClick={this.handleClick}>Log In</Link></li>

@@ -17,8 +17,10 @@ class RemoveDetail extends Component {
 
     
     return (
-      <button onClick={() => this.handleRemove(Object.keys(venueLoad[id])[0], id)}>Remove</button>
-      
+      <div className="remove-flex">
+        <button className="button-saved">✓ Saved</button>
+        <button className="button-remove"onClick={() => this.handleRemove(Object.keys(venueLoad[id])[0], id)}>Remove</button>
+      </div>
     );
   }
 }

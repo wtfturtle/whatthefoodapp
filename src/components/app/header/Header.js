@@ -39,6 +39,7 @@ class Header extends Component {
             <input id="check" className="checkbox" type="checkbox" onClick={this.handleClick} checked={menu}/>
 
             <div id="burger"><span></span><span></span><span></span></div>
+            
             <nav id="main-menu">
               <Link to="/" className="no-line"><h1 className="mobile-logo">What The Food</h1></Link>
               <ul className="nav-ul">

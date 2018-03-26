@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import './result.css';
 import StarRatingComponent from 'react-star-rating-component';
-// import { addVenue, removeVenue, editVenue } from './actions';
-// import { loadStar } from '../user/actions';
 
 class Rating extends Component {
-
-
 
   constructor() {
     super();
@@ -20,7 +15,6 @@ class Rating extends Component {
   onStarClick = (nextValue, prevValue, name) => {
     console.log('name: %s, nextValue: %s, prevValue: %s', name, nextValue, prevValue);
     this.setState({ rating: nextValue });
-    // this.props.loadStar(this.state.rating);
   };
 
 
@@ -45,7 +39,6 @@ class Rating extends Component {
 export default connect(
   state => ({ 
     user: state.user,
-    // venueLoad: state.venueLoad
   }),
   null
 )(Rating);

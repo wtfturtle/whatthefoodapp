@@ -7,8 +7,6 @@ import downclick from './assets/tdown-red.jpg';
 
 class Thumbs extends Component {
 
-
-
   render() {
 
     return (

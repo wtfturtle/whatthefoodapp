@@ -43,8 +43,6 @@ class MyResultDetail extends Component {
     const { message } = result.venue.price || 'Not Listed';
     const { user, loadSaveResults, venueLoad } = this.props;
 
- 
-
     return (
       <section className="main-container maxwidth-wrap">
         <div className="body-padding">

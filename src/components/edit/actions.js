@@ -11,7 +11,6 @@ export function addNote(note, venueId) {
     let { uid } = getState().user;
     notesByUser.child(uid).child(venueId).push().set(newDetail)
       .then(() => {
-        // const newNote = { key: data.key, note };
         dispatch({
           type: NOTE_ADD,
           payload: newDetail

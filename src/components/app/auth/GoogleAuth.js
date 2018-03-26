@@ -10,8 +10,6 @@ class GoogleAuth extends PureComponent {
   componentDidMount() {
     const { origin } = window.location;
     const { history } = this.props;
-    // const { from } = { from: { pathname: '/' } };
-    // const { pathname: redirect } = from;
 
     ui.start('#firebaseui-auth-container', {
       signInSuccessUrl: `${origin}/home`,
@@ -24,10 +22,6 @@ class GoogleAuth extends PureComponent {
       },
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       signInOptions: [
-        // {
-        //   provider: providers.EmailAuthProvider.PROVIDER_ID,
-        //   requireDisplayName: false
-        // },
         providers.GoogleAuthProvider.PROVIDER_ID
       ]
     });

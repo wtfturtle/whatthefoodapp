@@ -25,7 +25,6 @@ class Results extends Component {
               </ul>
             </div>
             : <Loading/>
-            // <h2 className="none">Sorry, No Results for {searchTerm} </h2>
           )
         }
 

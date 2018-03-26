@@ -80,13 +80,11 @@ class ResultDetail extends Component {
               }
               <br/><hr className="hr"/>
               {user && 
-            // (venueLoad[id] && 
                 <div>
                   <Rating/>
                   <hr className="hr"/>
                   <Notes id={id}/>
                 </div> 
-            // ) 
               }
             </div>
 
@@ -106,7 +104,6 @@ export default connect(
     results: state.results,
     venueLoad: state.venueLoad,
     searchTerm: state.searchTerm
-    // venueId: props.match.params.id
   }),
   { addVenue, removeVenue, editVenue }
 )(ResultDetail);

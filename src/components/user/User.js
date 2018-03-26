@@ -13,6 +13,8 @@ class User extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { list } = this.state;
+    // This is sure sign you missed using actions effectively.
+    // You have multiple async actions with no control or flow.
     this.props.addList(list);
     this.setState({
       list: ''

@@ -1,4 +1,4 @@
-import { db } from './firebase';
+import { db, auth } from './firebase';
 
 export const users = db.ref('users');
 // user key
@@ -19,6 +19,10 @@ export const places = db.ref('places');
   // phone
 
 export const notesByUser = db.ref('notesByUser');
+
+export const venueNotesByUser = venueId => notesByUser.child(auth.currentUser.uid).child(venueId);
+
+
 
 
 export const notes = db.ref('notes');

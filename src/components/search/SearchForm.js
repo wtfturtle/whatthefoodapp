@@ -15,16 +15,15 @@ export default class SearchForm extends Component {
     event.preventDefault();
     this.props.onComplete({
       ...this.state
-    });
-      
-    this.setState({
-      query: '',
-    });
+    })
+    // async, wait to complete...
+      .then(() => this.setState({ query: '' }));
 
   };
 
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
+    // you only have one input...
+    this.setState({ query: target.value });
   };
 
   render() {

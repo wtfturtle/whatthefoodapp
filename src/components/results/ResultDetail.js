@@ -13,9 +13,10 @@ class ResultDetail extends Component {
 
   render() {
 
-    const { id } = this.props.match.params; 
-    const { results } = this.props;
+    const { results, user, venueLoad, match, searchTerm } = this.props;
+    const { id } = match.params; 
 
+    // This is typically a sign your reducer data structure needs to be a dictionary, not an array
     const result = results.find(element => {
       return element.venue.id === id;
     });
@@ -24,15 +25,9 @@ class ResultDetail extends Component {
     
     const imageUrl = `${path.prefix}original${path.suffix}` || null;
 
-    const { name, url } = result.venue;
-    const { phone } = result.venue.contact || null;
-    const { address } = result.venue.location;
-    const { city } = result.venue.location;
-    const { message } = result.venue.price || 'Not Listed';
-    const { user, venueLoad } = this.props;
-
-    const { searchTerm } = this.props;
-
+    const { venue } = result;
+    const { name, url, contact: phone = null, location: address, price: message = 'Not Listed' } = venue;
+    
     return (
       <section className="main-container maxwidth-wrap">
         <div className="body-padding">

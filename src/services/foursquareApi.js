@@ -17,7 +17,8 @@ export function search({ query }) {
   const url = `${BASE_URL}&query=${query}${END_URL}`;
   
   return fetch(url).then(result => {
-    if(result.ok) return result.json();
+    // Shape the data here, not in presentation component!
+    if(result.ok) return result.json().then(r => res.response.groups[0].items);
     return result.json().then(json => { throw json; });
   });
 }

@@ -13,6 +13,8 @@ class Results extends Component {
     
     const { results, searchTerm } = this.props;
 
+    if(!results) return null;
+
     return (
       <Fragment>
         {searchTerm &&

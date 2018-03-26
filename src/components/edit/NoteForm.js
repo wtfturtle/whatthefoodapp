@@ -13,10 +13,10 @@ class NoteForm extends Component {
     event.preventDefault();
     const { id } = this.props;
     const { note } = this.state;
-    this.props.addNote(note, id);
-    this.setState({ 
-      note: '' 
-    });
+    this.props
+      .addNote(note, id)
+      // async, wait for result!
+      .then(() => this.setState({ note: '' }));
   };
 
   handleChange = ({ target }) => {

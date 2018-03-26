@@ -10,15 +10,14 @@ class Result extends Component {
 
   render() {
 
+    // These deep paths should be resolved prior to the presentation component...
     const path = this.props.venue.photos.groups[0] ? this.props.venue.photos.groups[0].items[0] : null;
     
     const imageUrl = path ? `${path.prefix}original${path.suffix}` : 'https://visitmasoncityiowa.com/wp-content/uploads/2017/03/3318_EAT-GENERIC-.jpg';
 
-    const { name } = this.props.venue;
-    const { address } = this.props.venue.location;
-    const { message } = this.props.venue.price || 'Not Listed';
-    const { id } = this.props.venue;
-    const { user, venueLoad } = this.props;
+    // clean this up...
+    const { user, venue, venueLoad } = this.props;
+    const { id, name, location, price = 'Not Listed' } = venue;
 
     return (
       <li className="result-li">
@@ -29,9 +28,9 @@ class Result extends Component {
         <p>Price: {message}<br/>{address}</p>
         {user && 
           (venueLoad[id] ? 
-            <Remove venue={this.props.venue}/> 
+            <Remove venue={venue}/> 
             :  
-            <Add venue={this.props.venue}/>
+            <Add venue={venue}/>
           )        
         } 
       </li>

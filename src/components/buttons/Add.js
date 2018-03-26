@@ -5,24 +5,32 @@ import { loadVenues } from '../user/actions';
 import './button.css';
 
 class Add extends Component {
-
+  // name this by what it does, not what action makes it change
   state = {
-    clicked: false
+    expanded: false
   };
+
+  handleExpansion = expanded => {
+    this.setState({ expanded });
+  }
 
   handleClick = event => {
     event.preventDefault();
-    this.setState({ clicked: true });
+    this.handleExpansion(true);
   };
 
   handleUnclick = event => {
     event.preventDefault();
-    this.setState({ clicked: false });
+    this.handleExpansion(false);
   };
 
   handleAdd = (listId, venueId, name) => {
-    this.props.addVenue(listId, venueId, name);
-    this.setState({ clicked: false });
+    // wait till async complete!
+    this.props.addVenue(listId, venueId, name)
+      .then(() => this.handleExpansion(false));
+    
+    // this needs to be part of adding a venue actions, not 
+    // a seperate load call!
     this.props.loadVenues();
   };
 
@@ -30,10 +38,10 @@ class Add extends Component {
 
     const { id } = this.props.venue;
     const { lists } = this.props;
-    const { clicked } = this.state;
+    const { expanded } = this.state;
 
     return (
-      (clicked ?
+      (expanded ?
         <div>
           <button className="button" onClick={this.handleUnclick}>✘ Close</button>
           <ul className="list-ul">

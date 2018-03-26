@@ -19,10 +19,14 @@ class Header extends Component {
   };
 
   handleLogout = () => {
-    this.props.logout(), 
-    this.setState(prev => {
-      return { menu: !prev.menu };
-    });
+    // wait till logout() completes.
+    // don't use comma operator like this :(
+    this.props.logout()
+      .then(() => {
+        this.setState(prev => {
+          return { menu: !prev.menu };
+        });
+      })
   };
 
   render() { 

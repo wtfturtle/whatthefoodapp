@@ -17,9 +17,4 @@ class Note extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    noteResults: state.notes 
-  }),
-  { loadNote }
-)(Note);
+export default Note;

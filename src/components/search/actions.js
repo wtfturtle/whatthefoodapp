@@ -1,9 +1,14 @@
 import { QUERY } from './reducers';
+import { saveResults } from '../results/actions';
 
 export function saveQuery(term) {
-  return {
-    type: QUERY,
-    payload: term
-  };
+  return dispatch => {
+    dispatch({
+      type: QUERY,
+      payload: term
+    });
+
+    dispatch(saveResults())
+  }
 }
 

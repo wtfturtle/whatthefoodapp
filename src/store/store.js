@@ -7,8 +7,7 @@ import { searchTerm } from '../components/search/reducers';
 import { listLoad, venueLoad, loadSaveResults } from '../components/user/reducers';
 import { results } from '../components/results/reducers';
 import { randomSearch } from '../components/random/reducers';
-import { notes } from '../components/edit/reducers';
-import { star } from '../components/edit/reducers';
+import { notes, star } from '../components/edit/reducers';
 
 const reducer = combineReducers({
   loading,

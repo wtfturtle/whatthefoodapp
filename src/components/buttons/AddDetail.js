@@ -4,6 +4,7 @@ import { addVenue } from '../results/actions';
 import { loadVenues } from '../user/actions';
 import './button.css';
 
+// How is this any different than `Add` :(
 class AddDetail extends Component {
 
   state = {

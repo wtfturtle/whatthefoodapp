@@ -1,42 +1,32 @@
 import { NOTE_ADD, NOTE_LOAD } from './reducers';
-import { notesByUser } from '../../services/firebaseDataApi';
+import { venueNotesByUser } from '../../services/firebaseDataApi';
+
+// Move functionality for current user into notesByUser, then this is much simpler:
 
 export function addNote(note, venueId) {
-  return (dispatch, getState) => {
-    
-    
-    const date = new Date().toLocaleString();
-    const newDetail = { date, note };
-
-    let { uid } = getState().user;
-    notesByUser.child(uid).child(venueId).push().set(newDetail)
-      .then(() => {
-        dispatch({
-          type: NOTE_ADD,
-          payload: newDetail
-        });    
-      });
+  return {
+    type: NOTE_ADD,
+    // you can directly "push" the data to set
+    payload: venueNotesByUser(venueId).push({
+      date: new Date(), // maintain date data type
+      note
+    })
   };
 }
 
-export function loadNote(id) {
-  return (dispatch, getState) => {
+const pivot = results => {
+  if(!results) return [];
 
-    const { uid } = getState().user;
+  return Object.keys(results).map(key => {
+    const note = results[key];
+    return { key, ...note };
+  });
+}
 
-    return dispatch ({
-      type: NOTE_LOAD,
-      payload: notesByUser.child(uid).child(id).once('value')
-        .then(data => {
-          const noteResults = data.val();
-          if(!noteResults) return [];
-
-          const results = Object.keys(noteResults).map(key => {
-            const note = noteResults[key];
-            return { key, ...note };
-          });
-          return results;
-        })
-    });
+export function loadNotes(id) {
+  return {
+    type: NOTE_LOAD,
+    payload: venueNotesByUser(id).once('value')
+      .then(data => pivot(data.val())
   };
 }

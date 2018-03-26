@@ -36,9 +36,4 @@ class Rating extends Component {
   }
 }
 
-export default connect(
-  state => ({ 
-    user: state.user,
-  }),
-  null
-)(Rating);
+export default Rating;

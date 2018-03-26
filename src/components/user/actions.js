@@ -4,10 +4,9 @@ import { listByUser, users, lists } from '../../services/firebaseDataApi';
 export function addList(list) {
   return (dispatch, getState) => {
     let { uid } = getState().user;
-    listByUser.child(uid).push(list);
     dispatch({
       type: ADD_LIST,
-      payload: list
+      payload: listByUser.child(uid).push(list)
     });
   };
 }
@@ -18,25 +17,29 @@ export function loadList() {
     const { uid, email } = getState().user;
     
     // create initial user node, child and email 
-    users.child(uid).child('email').set(email);
+    
     
     return dispatch ({ 
       type: LOAD_LIST,
-      payload: listByUser.child(uid).once('value')
-        .then(data => {
-          const listResults = data.val();
-          
-          if(!listResults) {
-            listByUser.child(uid).push('default'); //add default list here
-            return;
-          } else {
-            const results = Object.keys(listResults).map(key => {
-              const name = listResults[key];
-              return { key, name };
-            });
-            return results;
-          }
-        })
+      payload: Promise.all([
+        users.child(uid).child('email').set(email),
+        listByUser.child(uid).once('value')
+          .then(data => {
+            const listResults = data.val();
+            
+            if(!listResults) {
+              // This is a mess. No async control and it will erase in prior values
+              listByUser.child(uid).push('default'); //add default list here
+              return;
+            } else {
+              const results = Object.keys(listResults).map(key => {
+                const name = listResults[key];
+                return { key, name };
+              });
+              return results;
+            }
+          })
+      ]).then(([, results]) => results)
     });
   };
 }
@@ -74,6 +77,7 @@ export function loadSaveList(listKey) {
     return dispatch ({
       type: SAVE_LOAD,
       payload: 
+        // This action is called "save" but no saving happens???
         lists.child(listKey).once('value')
           .then(data => {
             const saveResults = data.val();

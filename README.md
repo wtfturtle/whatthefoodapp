@@ -1,4 +1,4 @@
-# whatthefoodapp
+# What The Food App
 
 ## Project Info:
 

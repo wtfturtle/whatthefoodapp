@@ -19,10 +19,12 @@ class Header extends Component {
   };
 
   handleLogout = () => {
-    this.props.logout(), 
-    this.setState(prev => {
-      return { menu: !prev.menu };
-    });
+    this.props.logout()
+      .then(() => {
+        this.setState(prev => {
+          return { menu: !prev.menu };
+        });
+      });
   };
 
   render() { 

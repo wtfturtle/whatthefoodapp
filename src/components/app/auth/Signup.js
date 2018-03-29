@@ -50,11 +50,11 @@ class Signup extends PureComponent {
                 <legend>{legendText}</legend>
 
                 <label htmlFor="email">
-            Email: <input name="email" required placeholder="name@gmail.com"/>
+                  Email: <input name="email" required placeholder="name@gmail.com"/>
                 </label>
           
                 <label htmlFor="password">
-            Password: <input name="password" required placeholder="abc123"/>
+                  Password: <input name="password" required placeholder="abc123"/>
                 </label>
           
                 <div>
